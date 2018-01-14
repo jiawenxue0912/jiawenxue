@@ -2,9 +2,137 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>登录页面</title>
+    <style>
+
+        body{background-image:url(5.jpg);
+        background-repeat:no-repeat;  }
+
+        ul
+        {
+            list-style-type:none;
+            margin:0;
+            padding:0;
+        }
+         .nav ul li
+        {
+             float:left;
+        }
+        .nav ul li a{
+            width: 80px;
+            height: 28px;
+            line-height: 28px;
+            margin: 10px 30px;
+            padding: 10px;
+            background: aliceblue;
+            color: black;
+            font-size: 12px;
+            display: block;
+            text-align: center;
+            text-decoration: none;
+        }
+        #text{
+            width: 100px;
+            height: 200px;
+            background-color: black;
+        }
+        #box_relative{
+            position: absolute;
+            left: 40px;
+            top:150px;
+            margin: 10px auto;
+            padding: 10px;
+            color: beige;
+            text-align: center;
+            display: block;
+
+        }
+        #text1 ul li  a {
+            position: absolute;
+            left: 700px;
+            top:20px;
+            width: 400px;
+            height: 400px;
+            font-size: 20px;
+            color: yellow;
+            text-decoration: none;
+            background-color: gray;}
+        #text2{
+            position: absolute;
+            left: 800px;
+            top:40px;
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+        }
+        #text3{
+
+            background-color: orange;
+            position: absolute;
+            left: 920px;
+            top:170px;
+            margin: 20px auto;
+
+            text-align: center;
+            font-size: 12px;
+            }
+        #text4{
+            float: left;
+            color: orangered;
+            position: absolute;
+            left: 800px;
+            top:200px;
+            text-align: center;
+            margin: 20px auto;
+            padding: 10px;
+        }
+    </style>
 </head>
 <body>
+<div id="img">
 
+
+</div>
+<div class="nav">
+<ul >
+    <li><a href="default.asp">导航1</a></li>
+    <li><a href="news.asp">导航2</a></li>
+    <li><a href="contact.asp">导航3</a></li>
+    <li><a href="about.asp">导航4</a></li>
+    <li><a href="about.asp">导航5</a></li>
+    <li><a href="about.asp">导航6</a></li>
+    <li><a href="about.asp">导航7</a></li>
+    <li><a href="about.asp">导航8</a></li>
+</ul>
+</div>
+<div id="box_relative">
+<ul id="text">
+    <li>导航1</li>
+    <li>导航2</li>
+    <li>导航3</li>
+    <li>导航4</li>
+    <li>导航5</li>
+    <li>导航6</li>
+    <li>导航7</li>
+    <li>导航8</li>
+
+<div id="text1">
+    <ul>
+        <li><a href="http">账号登录</a></li>
+
+    </ul>
+</div>
+    <div id ="text2">
+       <laber for="text"><b>username</b></laber><br>
+        <input type="text" id=""placeholder="username"><br>
+        <laber for="password"><b>password</b></laber><br>
+        <input type="password" id="password"placeholder="password"><br>
+</div>
+<div id="text3">
+<input type="button"value="登录">
+</div>
+    <div id="text4">
+       shoujiduanxindenglu
+    </div>
 </body>
 </html>
