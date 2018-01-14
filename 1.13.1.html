@@ -8,6 +8,7 @@
         body{background-image:url(5.jpg);
         background-repeat:no-repeat;  }
 
+
         ul
         {
             list-style-type:none;
@@ -23,7 +24,7 @@
             height: 28px;
             line-height: 28px;
             margin: 10px 30px;
-            padding: 10px;
+            padding: 5px;
             background: aliceblue;
             color: black;
             font-size: 12px;
@@ -31,71 +32,94 @@
             text-align: center;
             text-decoration: none;
         }
-        #text{
-            width: 100px;
-            height: 200px;
-            background-color: black;
+        ul{
+            list-style-type: none;
+            margin:0;
+            padding:0;
         }
-        #box_relative{
-            position: absolute;
-            left: 40px;
-            top:150px;
-            margin: 10px auto;
-            padding: 10px;
-            color: beige;
-            text-align: center;
-            display: block;
+.nav1 ul li a:link,a:visited
+{display: block;
+    width: 120px;
+    color: #FFFFFF;
+    padding: 4px;
+    background-color: gray;
+    text-align: center;
+    text-decoration: none;
+    font-weight:bold;
+    position: relative;
+    top: 120px;
+    left:20px;
+}
+        .nav1 ul li a:hover,a:active
+        {
+            background-color: #cc0000;
+        }
+#text1{
+            width: 300px;
+            background-color:white;
+        }
+#text1 {
+    position: absolute;
+    left: 1000px;
+    top: 180px;
+    color: #cc0000;
+    text-decoration: none;
+    font-size: 20px ;
+    font-weight:bold;
+    padding: 10px;
+    text-align: center;
+}
+#text2{
+            width: 300px;
+            background-color: white;
+        }
+#text2{
+    position: absolute;
+        left: 1000px;
+        top: 220px;
+        color: orangered;
+        text-decoration: none;
+        font-weight:bold;
+        padding: 10px;
+        text-align: center;}
+#text3{
+            width: 300px;
+            background-color: white;
+        }
+#text3{
+    position: absolute;
+    left: 1000px;
+    top: 327px;
+    color: orangered;
+    text-decoration: none;
+    font-weight:bold;
+    text-align: center;
+    padding: 10px;
+}
+#text4{
+    width: 300px;
+    background-color: white;
+}
+#text4{
+    position: absolute;
+    left: 1000px;
+    top: 367px;
+    color: lightskyblue;
+    font-weight: bold;
+    font-size: 20px;
+    padding:10px ;
+    text-align: center;
+        }
 
-        }
-        #text1 ul li  a {
-            position: absolute;
-            left: 700px;
-            top:20px;
-            width: 400px;
-            height: 400px;
-            font-size: 20px;
-            color: yellow;
-            text-decoration: none;
-            background-color: gray;}
-        #text2{
-            position: absolute;
-            left: 800px;
-            top:40px;
-            margin: 20px auto;
-            padding: 10px;
-            text-align: center;
-        }
-        #text3{
-
-            background-color: orange;
-            position: absolute;
-            left: 920px;
-            top:170px;
-            margin: 20px auto;
-
-            text-align: center;
-            font-size: 12px;
-            }
-        #text4{
-            float: left;
-            color: orangered;
-            position: absolute;
-            left: 800px;
-            top:200px;
-            text-align: center;
-            margin: 20px auto;
-            padding: 10px;
-        }
     </style>
 </head>
 <body>
+
 <div id="img">
-
-
 </div>
 <div class="nav">
 <ul >
-    <li><a href="default.asp">导航1</a></li>
+    <li><a href="default.asp" target="_blank">导航1</a></li>
     <li><a href="news.asp">导航2</a></li>
     <li><a href="contact.asp">导航3</a></li>
     <li><a href="about.asp">导航4</a></li>
@@ -104,23 +128,20 @@
     <li><a href="about.asp">导航7</a></li>
     <li><a href="about.asp">导航8</a></li>
 </ul>
+</div >
+<div class="nav1">
+<ul >
+    <li><a href="default.asp">Home</a></li>
+    <li><a href="news.asp">News</a></li>
+    <li><a href="contact.asp">Contact</a></li>
+    <li><a href="about.asp">About</a></li>
+    <li><a href="about.asp">But</a></li>
+    <li><a href="about.asp">Active</a></li>
+    <li><a href="about.asp">Png</a></li>
+</ul>
 </div>
-<div id="box_relative">
-<ul id="text">
-    <li>导航1</li>
-    <li>导航2</li>
-    <li>导航3</li>
-    <li>导航4</li>
-    <li>导航5</li>
-    <li>导航6</li>
-    <li>导航7</li>
-    <li>导航8</li>
-
 <div id="text1">
-    <ul>
-        <li><a href="http">账号登录</a></li>
-
-    </ul>
+        账号登录
 </div>
     <div id ="text2">
        <laber for="text"><b>username</b></laber><br>
@@ -131,8 +152,18 @@
 <div id="text3">
 <input type="button"value="登录">
 </div>
-    <div id="text4">
-       shoujiduanxindenglu
-    </div>
+
+<div id="text4">
+    <ul>
+    <li>短信验证&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;立刻注册<br><br><br><br></li>
+<li>
+        其他方式登录<br><br>
+</li>
+
+       <li> QQ&nbsp;&nbsp;微信&nbsp;&nbsp;微博&nbsp;&nbsp;支付宝</li>
+    </ul>
+</div>
 </body>
 </html>
