@@ -152,3 +152,45 @@
     background-color:#ff6700 ;
 }
 /* header end*/
+/*body start*/
+.bodybar{
+    background: url("../img/mi-body.jpg") ;
+    width:1226px;
+    margin:0 auto;
+    height: 460px;
+}
+.bodybar .body-left {
+    position: absolute;
+    width:220px;
+    height: 460px;
+    float: left;
+}
+.bodybar .body-left a{
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    height: 46px;
+    line-height: 46px;
+    color: #fff;
+    text-decoration: none;
+    background: #333;
+    background: rgba(0,0,0,0.6);
+}
+.bodybar .body-left a:hover{
+    background-color: #f56600;
+}
+.bodybar .body-left .iconfont{
+    float: right;
+    margin-right: 10px;
+}
+.bodybar .content .iconfont{
+    font-size: 20px;
+}
+.bodybar .content .iconfont1{
+
+}
+.bodybar  .iconfont2 a{
+   float: right;
+    text-decoration: none;
+}
+/*body end*/
