@@ -2,8 +2,13 @@
     margin: 0;
     padding: 0;
 }
-/*
+.clearfix :after{
+    content: "";
+    clear: both;
+    display: block;
+}
 /*header css start */
+
 .header a{
     display: block;
 }
@@ -33,8 +38,6 @@
 .container .top-text{
     padding: 27px 0 24px;
     text-align: center;
-}
-.container .top-text{
     font-size: 24px;
 }
 .container .top-text a{
@@ -51,11 +54,10 @@
 .container .top-text a:hover{
     color: #f56600;
 }
-
 .container .login-input input{
     font-family: arial,"Hiragino Sans GB","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;
     font-size: 16px;
-    width: 306px;
+    width: 314px;
     height: 22px;
     line-height: 22px;
     padding: 13px 16px 13px 14px ;
@@ -74,6 +76,7 @@
     font-size: 14px;
     color: white;
     cursor: pointer;
+    margin-bottom: 10px;
 }
 .container .small-text{
     font-size: 14px;
@@ -92,12 +95,62 @@
 .container .st-right{
     float: right;
 }
-.clearfix :after{
-    content: "";
-    clear: both;
-    display: block;
-}
+
 .container .st-right a:hover{
     color: #f56600;
+}
+.container .login-type fieldset{
+    border: 0px;
+    border-top:1px solid #dddddd;
+    color: #bbbbbb;
+    font-size: 14px;
+    padding-top: 10px;
+}
+.container .login-type{
+    margin-top: 115px;
+}
+.container .login-icon{
+    text-align: center;
+}
+.container .login-icon a {
+    width: 30px;
+    height: 30px;
+    background-color: #757575;
+    display: inline-block;
+    border-radius: 50%;
+    margin: 0 17px;
+}
+.container .login-icon i{
+    display: block;
+    width: 18px;
+    height: 18px;
+    background-image: url("../img/3.png");
+    margin: 4px auto;
+}
+.container .qq:hover{
+    background-color: #0288d1;
+}
+.container .qq i{
+    background-position: -19px 0;
+}
+.container .sina:hover{
+    background-color: #d32f2f;
+}
+.container .sina i{
+    background-position:-38px 0;
+}
+.container .alipay:hover{
+    background-color:#0288d1 ;
+}
+.container .alipay i{
+    background-position:-57px 0;
+    width: 25px;
+}
+.container .wechat:hover{
+    background-color: green;
+}
+.container .wechat i{
+    background-position:-84px 0;
+    width: 23px;
 }
 /*container css end */
