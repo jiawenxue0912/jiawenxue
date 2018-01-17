@@ -8,6 +8,7 @@
     display: block;
 }
 /*header css start */
+
 .header a{
     display: block;
 }
@@ -37,8 +38,6 @@
 .container .top-text{
     padding: 27px 0 24px;
     text-align: center;
-}
-.container .top-text{
     font-size: 24px;
 }
 .container .top-text a{
@@ -55,7 +54,6 @@
 .container .top-text a:hover{
     color: #f56600;
 }
-
 .container .login-input input{
     font-family: arial,"Hiragino Sans GB","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;
     font-size: 16px;
