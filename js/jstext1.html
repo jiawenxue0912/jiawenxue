@@ -176,16 +176,204 @@
 //    }
 //    document.write("<br>");
 //}
-    for(var i=0;i<10;i++){
-        a=i+2;
-        for(var k=10-i;k>1;k--){
-            document.write("&nbsp;");
-        }
-        for(var j=1;j<a;j++){
-            document.write("&nbsp;*");
-        }
-           document.write("<br>");
+
+
+//    for(var i=0;i<10;i++){
+//        a=i+2;
+//        for(var k=10-i;k>1;k--){
+//            document.write("&nbsp;");
+//        }
+//        for(var j=1;j<a;j++){
+//            document.write("&nbsp;*");
+//        }
+//           document.write("<br>");
+//    }
+//
+
+//var x = Math.random();
+//alert(x);
+//var y = Math.random();
+//alert(y);
+//if(x==y||x!=y){
+//    if(x==y)
+//        alert(x);
+//}else {
+//    var max = x > y;  x:y;
+//    alert(max);
+//}
+//    var a=Math.random();
+//    var b=Math.random();
+//    console.log("a="+a+"b="+b);
+//    var c = a > b?  a:b;
+//    console.log(c);
+
+
+//    var today = new Date();
+//    var year=today.getFullYear();
+//    document.write()
+//    if(year%4==0 && year%100!=0 ||year%400==0){
+//        document.write(year+"是闰年")
+//    }else{
+//        document.write(year+"不是闰年")
+//    }
+
+
+//      var a= window.prompt("请输入你的年龄");
+//         if(a<14){
+//             alert("儿童");
+//            }
+//            else if(a>=14 && a<24){
+//              alert("青少年");
+//          }
+//          else if(a>=24 && a<40){
+//              alert("青年");
+//          }
+//          else if(a>=40 && a<60){
+//              alert("中年");
+//          }
+//          else{ (a>=60)
+//              alert("老年")
+//}
+
+
+
+//
+//     var aa= window.prompt("请输入一个数字");
+//          if(aa) {
+//              switch (aa) {
+//                  case 1:
+//                      alert:("星期日");
+//                      break;
+//                  case 2:
+//                      alert:("星期一");
+//                      break;
+//                  case 3:
+//                      alert:("星期二");
+//                      break;
+//                  case 4:
+//                      alert:("星期三");
+//                      break;
+//                  case 5:
+//                      alert:("星期四");
+//                      break;
+//                  case 6:
+//                      alert:("星期五");
+//                      break;
+//                  case 7:
+//                      alert:("星期六");
+//                      break;
+//              }
+//          }
+
+//    var a=1;
+//   for(var i=1;i<11;i++) {
+//       a *= i;
+//   }
+//   console.log(a);
+//
+//
+//
+//var a=1;
+//var sum=0;
+//for(var i=1;i<11;i++){
+//    a*=i;
+//    sum+=a;
+//}
+//console.log(a);
+//
+//
+//for (var i=100; i<1000;i++){
+//    if(i%4==2 && i%7==3 && i%9==5){
+//        console.log(i);
+//    }
+//}
+//
+//
+//var no2=0,no3=0,no4=0;
+//for( vari=1000;i<10000;i++){
+//    no4=Math.floor(i/1000);
+//    no3=Math.floor(i/100)%10;
+//
+//    no2=Math.floor(i/10)%0;
+//
+//    if(no3+no2==no4 && i%13==0){
+//        console.log(i)
+//    }
+//}
+//function area() {
+//    //一段计算三角形面积的代码
+//    var wide=window.prompt("请输入三角形的底边长度！","");
+//    var high=window.prompt("请输入三角形的高！","");
+//    var area=wide*high/2;
+//    if (!isNaN(area)) {//判断用户是否输入的是数字
+//        alert("三角形的面积为"+area);
+//    } else {
+//        alert("您的输入有误!");
+//    }
+//}
+//area();
+
+
+//var x =window.prompt("请输入一个数");
+//function  z( ){
+//var z;
+//var z = 4*x*x+3*x+2;
+//        alert(z);
+//}
+//z();
+//
+//var x =window.prompt("请输入一个数");
+//var y =window.prompt("请输入另外一个数");
+//function  compare() {
+//if(x==y||x!=y){
+//    if(x==y)
+//        alert(x);
+//}else {
+//    var min = x < y;x:y;
+//    alert(min);
+//}
+//}compare();
+
+
+//for (var i=1; i<1000;i++){
+//    if(i%3==0 && i%5==0 && i%7==0){
+//        console.log(i);
+//    }
+//    for(var j=1;j<6;j++){
+//
+//    }
+//}
+//
+//function a() {
+//    for(var i=100;i<1000;i++){
+//        if(i%i==0 && i%1==0){
+//            console.log(i);
+//        }
+//    }
+//}a()
+
+var a=1;
+var b=0;
+function a() {
+    for (var i = 1; i <= 12; i++) {
+        a *= i;
     }
+    for (var j = 1; j <= 10; j++)b
+    {
+        b -= a;
+    }
+    console.log(b);
+
+}
+a();
+
+function sum(n){
+    if(n==1){
+        return 1
+    }
+    return sum(n-1)+n;
+}
+sum(2);
 </script>
 </body>
 </html>
