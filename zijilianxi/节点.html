@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body onload="">
+<div id="box">1</div>
+<span >11</span>
+<span >22</span>
+<a href="">22</a>
+<img src="">
+<script>
+var all=document.getElementsByTagName("*");
+var aa =document.querySelector("#box");1
+//var span2=aSpan.nextSibling;  //获取兄弟节点
+var aspan=aSpan.nextElementSibling;//兼容性问题
+var aspan=aSpan.previousElementSibling;
+
+var span2=next(aSpan);
+function next(obj) {
+    var nextNode = obj;
+    do{
+        nextNode=nextNode.nextSibling;
+    }
+    while ( nextNode && nextNode.nodeType != 1) ;
+    return nextNode;
+}
+console.log(span2);
+
+
+
+
+
+//var classaa=getClassName("aa");
+//function getClassName(className) {
+//    if(document.getElementsByClassName("")){
+//        return document.getElementsByClassName("")
+//    }else{
+//    var all=document.getElementsByTagName("*");
+//    var thisArr=[];
+//    for(var i=0;i<all.length;i++){
+//        if(all[i].className==className){
+//            thisArr.puss(all[i]);
+//       }
+//    }return thisArr;
+//}
+//}console.log(classaa);
+
+
+
+</script>
+</body>
+</html>
