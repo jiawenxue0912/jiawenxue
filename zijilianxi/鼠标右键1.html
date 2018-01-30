@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>鼠标右键</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+       ul{
+           list-style-type:none;
+           border:1px solid #f56600;
+           width: 150px;
+           text-align: center;
+           display: none;
+           position: absolute;
+       }
+        ul li{
+            border:1px solid #f56600;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul-menu" class="ul-cn">
+    <li links="www.baidu.com">跳转</li>
+    <li links="www.sina.com">设置已读</li>
+    <li>设置已读</li>
+    <li>删除邮件</li>
+</ul>
+<script>
+    var oUl=document.getElementById("ul-menu");
+    var aLi=document.getElementsByTagName("li");
+    document.oncontextmenu=function(e){
+        e=e||window.event;
+        oUl.style.display="block";
+        oUl.style.top=e.clientY+"px";
+        oUl.style.left=e.clientX+"px";
+        return false;
+    }
+    document.onclick=function () {
+        oUl.style.display="none";
+    }
+    for( var i=0;i<aLi.length;i++){
+        aLi[i].onclick=function () {
+            var a=this.getAttribute("links");
+            location.href="http://"+a;
+
+        }
+
+    }
+//    var oUL=document.getElementById("ul-menu");
+//    var aLi=document.getElementsByTagName("li");
+//    //var aUlCn=document.getElementsByClassName("ul-cn");
+//    document.oncontextmenu = function (e) {
+//        e=e||window.event;
+//        oUL.style.display="block";
+//        oUL.style.top=e.clientY+"px";
+//        oUL.style.left=e.clientX+"px";
+//        return false;
+//    }
+////    document.onclick=function () {
+//        oUL.style.display="none";
+//    }
+//for(var i=0;i<aLi.length;i++){
+//        aLi[i].onclick=function () {
+//            var thisLink = this.getAttribute("links");
+//            location.href = "http://www.baidu.com";
+//            var thisText=this.innerText;
+//            alert(thisText);
+//        }
+//}
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>自动播放——幻灯片效果</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            background: #333;
+        }
+        ul{
+            list-style-type: none;
+        }
+        .box{
+            width:500px;
+            height: 200px;
+            padding:10px;
+            margin: 30px auto;
+            border-radius: 10px;
+            background: #ffffff;
+            overflow: hidden;
+            position: relative;
+        }
+        .radio-btn{
+            position: absolute;
+        }
+        .radio-btn li{
+            height: 20px;
+            width: 20px;
+            background: #F90;
+            opacity: 0.7;
+            filter: alpha(opacity=70);
+            float: left;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 20px;
+            font-size: 14px;
+            color: #ffffff;
+            margin-right:10px ;
+        }
+        .img-bar{
+            height:200px;
+            overflow: hidden;
+        }
+        .left-bt li{
+            line-height: 17px;
+        }
+        .left-bt{
+            left:10px;
+            bottom: 10px;
+
+        }
+        .right-btn{
+            right: 10px;
+            bottom: 10px;
+        }
+        .radio-btn .active{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="img-bar">
+        <ul>
+            <li><img src="mi-b2.jpg" alt=""></li>
+            <li><img src="mi-b6.jpg" alt=""></li>
+            <li><img src="mi-b1.jpg" alt=""></li>
+            <li><img src="mi-z4.jpg" alt=""></li>
+            <li><img src="mi-z2.png" alt=""></li>
+        </ul>
+    </div>
+    <div>
+        <ul class="radio-btn left-bt">
+            <li this-type="prev">&lt;</li>
+            <li this-type="next">&gt;</li>
+        </ul>
+    </div>
+    <div>
+        <ul class="radio-btn right-btn">
+            <li class="active">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+</div>
+<script>
+    var oBox = document.getElementsByClassName("box");
+    var aUl = document.getElementsByTagName("ul");
+    var aImg = aUl[0].getElementsByTagName("li");
+    var aLbt = aUl[1].getElementsByTagName("li");
+    var aRbt = aUl[2].getElementsByTagName("li");
+    var globalIndex=0;
+    var isInterval=true;
+
+    function changeImg (index) {
+        if(index == 5){
+            index = 0;
+            globalIndex =0;
+        }
+        if(index == -1){
+            index = 4;
+            globalIndex=4;
+        }
+        for(var j=0;j<aRbt.length;j++){
+            aRbt[j].className=" ";
+            aImg[j].style.display="none";
+        }
+        aRbt[index].className="active";
+        aImg[index].style.display="block";
+    }
+    for(var i=0;i<aRbt.length;i++) {
+        aRbt[i].index = i;
+        aRbt[i].onmouseover = function () {
+            globalIndex = this.index;
+            changeImg(globalIndex);
+        }
+    }
+    for(var k=0;k<aLbt.length;k++){
+        aLbt[k].onclick = function () {
+           changeImg(globalIndex);
+            var thisType = this.getAttribute("this-type");
+            if(thisType=="next"){
+                changeImg(++globalIndex);
+            }else{
+                changeImg(--globalIndex)
+            }
+        }
+        }
+    setInterval(function () {
+        if(isInterval){
+            changeImg(globalIndex++);
+        }
+    },1000);
+    oBox[globalIndex].onmouseover = function () {
+        isInterval =false;
+    }
+    oBox[globalIndex].onmouseout = function () {
+        isInterval =true;
+    }
+
+//    var aUl = document.getElementsByTagName("ul");
+//    var aImg = aUl[0].getElementsByTagName("li");
+//    var aLbt = aUl[1].getElementsByTagName("li");
+//    var aRbt = aUl[2].getElementsByTagName("li");
+//    var globalIndex=0;
+
+//    function changeImg(index) {
+//        if(index == 5){
+//            index = 0;
+//            globalIndex =0;
+//        }
+//        if(index == -1){
+//            index = 4;
+//            globalIndex=4;
+//        }
+//
+//        console.log(index);
+//        for(var j =0;j<aRbt.length;j++){
+//            aRbt[j].className="";
+//            aImg[j].style.display="none";
+//        }
+//        aRbt[index].className="active";
+//        aImg[index].style.display = "block";
+//    }
+//
+//    for (var i = 0; i<aRbt.length;i++){
+//        aRbt[i].index = i;
+//        aRbt[i].onmouseover = function () {
+//            globalIndex = this.index;
+//            changeImg(globalIndex);
+//
+//        }
+//    }
+//
+//    for(var k=0;k<aLbt.length;k++){
+//        aLbt[k].onclick = function () {
+//            var thisType = this.getAttribute("this-type");
+//            if(thisType=="next"){
+//                changeImg(++globalIndex);
+//            }else{
+//                changeImg(--globalIndex)
+//            }
+//        }
+//    }
+
+
+
+</script>
+</body>
+</html>

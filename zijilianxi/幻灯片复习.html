@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        ul{
+            list-style-type: none;
+        }
+ body{
+     background-color: black;
+ }
+.box{
+    height: 400px;
+    width: 1000px;
+    background: #ffffff;
+    border-radius: 10px ;
+    margin: 30px auto;
+    padding: 10px;
+    overflow:hidden ;
+    position: relative;
+}
+.img-bar{
+    height: 400px;
+    overflow: hidden;
+
+}
+ .radio li{
+    height: 30px;
+    width: 30px;
+    background: #F90;
+    opacity: 0.7;
+    filter: alpha(opacity=70);
+    float: left;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 30px;
+    font-size: 14px;
+    color: #ffffff;
+    margin-right:10px ;
+}
+.radio{
+    position: absolute;}
+
+.left{
+    left:20px;
+    bottom: 20px;
+
+}
+.right {
+    right: 20px;
+    bottom: 20px;
+}
+.radio .active{
+    background-color: #00FF00;
+}
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="img-bar">
+        <ul>
+            <li><img src="mi-b2.jpg"></li>
+            <li><img src="mi-b6.jpg"></li>
+            <li><img src="mi-b1.jpg"></li>
+            <li><img src="mi-z2.png"></li>
+            <li><img src="mi-z3.png"></li>
+        </ul>
+    </div>
+    <div>
+        <ul class="radio left">
+            <li this-type="prev">&lt;</li>
+            <li this-type="next">&gt;</li>
+        </ul>
+    </div>
+    <div>
+        <ul class="radio right">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+    </div>
+</div>
+
+<script>
+    var oBox=document.getElementsByClassName("box");
+    var aUl=document.getElementsByTagName("ul");
+    var aImg=aUl[0].getElementsByTagName("li");
+    var aLbt=aUl[1].getElementsByTagName("li");
+    var aRbt=aUl[2].getElementsByTagName("li");
+    var globalIndex=0;
+    var isInterval=true;
+    function changeImg(index) {
+        if(index == 5){
+            index = 0;
+            globalIndex =0;
+        }
+        if(index == -1){
+            index = 4;
+            globalIndex=4;
+        }
+
+    for(var j=0;j<aRbt.length;j++){
+        aRbt[j].className=" ";
+        aImg[j].style.display="none";
+    }
+    aRbt[index].className="active";
+    aImg[index].style.display="block";
+    }
+    for(var i=0;i<aRbt.length;i++){
+        aRbt[i].index=i;
+        aRbt[i].onmouseover=function () {
+            globalIndex=this.index;
+            changeImg(globalIndex);
+        }
+    }
+    for(var k=0;k<aLbt.length;k++){
+        aLbt[k].onclick=function(){
+          changeImg(globalIndex);
+            var thisType = this.getAttribute("this-type");
+           if(thisType=="next"){
+               changeImg(++globalIndex)
+           }else{
+               changeImg(--globalIndex)
+           }
+        }
+    }
+var timer=setInterval(function () {
+    if(isInterval){
+        changeImg(globalIndex++)
+    }
+},1000)
+    oBox[globalIndex].onmouseover = function () {
+        isInterval =false;
+    }
+    oBox[globalIndex].onmouseout = function () {
+        isInterval =true;
+    }
+</script>
+</body>
+</html>
