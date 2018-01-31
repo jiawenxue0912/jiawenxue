@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .div1{
+        width: 400px;
+        height: 400px;
+        background-color: #f56600;
+    }
+    .div2{
+        width: 300px;
+        height: 300px;
+        background-color: #00FF00;
+    }
+    .div3{
+        width: 200px;
+        height: 200px;
+        background-color: red;
+    }
+</style>
+<body>
+<div  class="div1">
+    <div  class="div2">
+        <div class="div3"></div>
+    </div>
+</div>
+<script>
+var oDiv1=document.getElementsByClassName("div1")[0];
+var oDiv2=document.getElementsByClassName("div2")[0];
+var oDiv3=document.getElementsByClassName("div3")[0];
+//阻止事件冒泡的方法：
+//    oDiv1.onclick=function (e) {
+//        console.log("div1");
+//        e.stopPropagation();
+//    }
+//    oDiv2.onclick=function (e) {
+//       console.log("div2");
+//        e.stopPropagation();
+//}
+//    oDiv3.onclick=function (e) {
+//       console.log("div3");
+//        e.stopPropagation();
+//}
+
+      oDiv1.addEventListener("mouseover",function (e) {
+
+          console.log("div1");
+     },false)//false  冒泡   true  获取
+     oDiv2.addEventListener("mouseover",function (e) {
+      e.stopPropagation();
+         console.log("div2");
+     },false)
+    oDiv3.addEventListener("mouseover",function (e) {//不覆盖
+
+        console.log("div3");
+    },false)
+
+
+//    oDiv3.removeEventListener("mouseover",function () {
+//
+//    })
+
+
+    oDiv3.detachEvent("onclick",function () {
+    console.log(this);
+})
+
+
+function fun3() {
+    console.log(this);
+}
+oDiv3.attachEvent("onclick",function () {
+    fun3.call(oDiv3);
+});
+      //封装函数addEvent
+//oDiv3=function () {
+//    console.log("div3");
+//}
+
+
+function fn1() {
+    console.log("this");
+}
+addEvent(oDiv3,"click",fn1);
+function addEvent(elem,eve,fun) {
+    if(elem.addEventListener){//能力测试
+        elem.addEventListener(eve, fun);
+    }else if(elem.attachEvent){
+        var aa=function () {
+            fun.call(elem);
+        }
+        elem.attachEvent("on"+eve,aa);
+    }else{
+        elem["on"+eve]=fun;
+        }
+
+}
+
+
+function fn2() {
+    console.log("1")
+}
+removeEventListener(oDiv3,"click",fn2);
+function removeEventListener(elem,eve,fun) {
+    if(elem.removeEventListener){
+        elem.removeEventListener(eve, fun);
+    }else if(elem.detachEvent){
+        elem.detachEvent("on"+eve,fun);
+    }
+}
+
+</script>
+</body>
+</html>

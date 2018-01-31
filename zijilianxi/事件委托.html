@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="box">
+    <button>添加</button>
+<ul  >
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+</div>
+
+<script>//动态添加***********
+var oUl=document.getElementsByClassName("ul")[0];
+var oBtn=document.getElementsByClassName("button");
+var oBox=document.getElementsByClassName("box");
+
+oBtn.onclick=function () {
+    var aa=document.createElement("li");
+    aa.innerHTML=Math.random();
+    oBox.appendChild("aa");
+}
+oUl.onclick=function(e){
+    var This=e.target;
+    console.log(This.innerHTML);
+}
+//oUl.onclick=function(e){//兼容IE
+//    var This=window.event.srcElement || e.target;
+//    console.log(This.innerHTML);
+//}
+
+
+</script>
+</body>
+</html>
