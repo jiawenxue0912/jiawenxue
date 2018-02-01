@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script>
+    window.onload=function () {
+        console.log("onload:"+$("p").length);
+    }
+$(document).ready(function () {
+    console.log("ready:"+$("p").length);})
+    $(function () {
+        console.log("简写:"+$("p").length);})
+
+</script>
+</head>
+<body>
+<div id="box"></div>
+<div class="aa">
+    <p></p>
+</div>
+<script src="js/jQuerey."></script>
+<script>
+    $(function () {
+
+     })
+//    var oBox=document.getElementById("box");
+//    var $box=$("#box");
+//    var $aa=$(".aa");
+//    var $p =$("p");
+    var $child=$("#box >.aa").html();
+    $("p:eq(1)").css("color","blue");
+    $("p").click(function () {
+        console.log($(this).index());
+        $(this).addClass("active");
+    })
+    $(".bb").click(function () {
+        $(this).remove("active");
+    })
+
+//    $aa.html("111")
+//    console.log($box.html());
+//    console.log($(obox).html());
+//    console.log($box.get(0));
+
+    var $attr=$(".div1")//可以输出自定义的
+    var $prop  //   checked复选框    selected   不可以操作自定义的   可以操作
+
+
+</script>
+
+
+
+
+</body>
+</html>
