@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="jquery-3.3.1.js"></script>
+<body>
+<input type="text" id="vals" value="">
+<button  id="btn">选取</button>
+<p>1</p>
+<p class="aa">2</p>
+<p class="aa">3</p>
+<p>4 nihao</p>
+<p>5</p>
+<p>6</p>
+<p></p>
+<div>
+    <a href="">22</a>
+</div>
+<script>
+       var $btn1=$("#btn");
+          $btn1.click(function () {
+          var thisVal =($("#vals").val());
+          $("p:contains("+thisVal+")").css("color","red");
+    });
+
+//    $("p:gt(2)").css("color",red);//选取p标签2后
+//    $("p:last").css("color",red);
+//    $("p:not('.aa')").css("color",red);
+//    $("p:odd").css("color",red);//从零开始偶数
+//    $("p:contains('4')").css("color",red);//包含4
+//    $("p:empty").html("123");//选取为空的p标签
+//    $("div:has('p')").html("你好");//判断div下的p变成你好
+//    $("p:parent").html("你好");//改变有的
+//    $("p:visible").html("你好");//显示出来的，可见的
+//    $("p:hidden").html("你好");//选中文档内所有隐藏的
+//    $("p[class^='aa']").html("你好");//选中p下以aa开头的
+//    $("p[class*='aa']").html("你好");//包含aa//
+//    $("p[name~='aa']").html("你好");//空格分隔
+//    $("p:first-child").html("你好");//被选中p的第一个
+//    $("p:first-of-type").html("你好");//不管什么所有里的第一个
+//    $("p:nth-child(2n+1)").html("你好");//下标索引从1开始
+//    $("p:nth-child(3)").toggleClass("ee");
+
+</script>
+</body>
+</html>

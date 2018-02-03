@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="jquery-3.3.1.js"></script>
+<body>
+<div id="box" class="aa"></div>
+<input type="=text" value="123" placeholder="输入用户名">
+<input type="checkbox" id="cd" value="111">
+<script>
+    $("#box").removeClass("class");
+    console.log($("#cd").val());
+    console.log($("#box").hasClass("aa"));//判断是否存在aa
+
+    console.log($(".box").Height());//最里面高度
+    console.log($(".box").innerHeight());//包含padding
+    console.log($(".box").outerHeight());//包含边框
+    console.log($(".box").offset())//相对文档的距离
+    console.log($(".box").position())//相对于父级
+    console.log($(".box").clone().get(0));
+    $(".box2").wrapAll("<div class='box3'></div>")//整体嵌套一个box3
+    $(".box2").wrap("<div class='box3'></div>")//每一个嵌套一个box3
+    $(".box2").append("<div class='box3'></div>")//父级最后加
+    $("<div class='box3'>1111</div>").appendTo(".box2").css("color","red")
+    $(".box").text("<a>111</a>");//html获取文字
+    $(".box").after("<div class='box3'>1111</div>")//在box后加box3    after是在之前加
+    $("<div class='box3'>1111</div>").insertBefore(".box").css("color","red");
+    $(".box4").empty();//所有内容付空
+    $(".box4").remove();//清除整个对象
+    $(".box4").unwrap("div")//找到父级满足条件的div
+
+
+
+</script>
+</body>
+</html>
