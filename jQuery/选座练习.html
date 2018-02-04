@@ -2,180 +2,282 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>在线选座</title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+        body{
+            font-size: 16px;
+            background-color: #343636;
+        }
+        ul{
+            list-style: none;
+        }
+        .clearfix:after{
+            content:"";
+            display:block;
+            clear:both;
+        }
+        .container{
+            width: 100%;
+            max-width: 750px;
+            min-width: 320px;
+            position: relative;
+            margin:0 auto;
+            margin-bottom: 6rem;
+        }
+        .header .date{
+            font-size: 1.8rem;
+            width: 750px;
+            height: 94px;
+            line-height: 94px;
+            padding-left: 20px;
+            background-color: #fff;
+        }
+        .prompt{
+            height: 95px;
+            padding:30px 0;
+        }
+        .prompt ul li{
+            height: 35px;
+            line-height: 35px;
+            display: inline-block;
+            margin-left: 30px;
+        }
+        .prompt li span{
+            float: left;
+            font-size: 1.8em;
+            color: #fff;
+            margin-left: 10px;
+        }
+        .prompt li span[class^="color-type"]{
+            width: 45px;
+            height: 35px;
+            background-color: #fff;
+
+        }
+        .prompt li .color-type2{
+            background-color: #fe3f55 !important;
+        }
+        .prompt li .color-type3{
+            background-color: #0099ff !important;
+        }
+        .header .img{
+            text-align: center;
+            border-top: 1px solid #555555;
+        }
+        .content{
+            padding:50px 30px 0;
+        }
+        .content-list{
+            margin-top:30px;
+        }
+        .content-list li{
+            display: inline-block;
+            width: 45px;
+            height: 35px;
+            background-color: #0099ff;
+            margin-left: 10px;
+        }
+        .content-list .empty{
+            background-color:#fff !important;
+        }
+        .content-list .selected{
+            background-color:#fe3f55 !important;
+        }
+        .content-list li:nth-child(6){
+            margin-left: 7.8rem;
+        }
+        .footer{
+            margin-top:30px;
+            border-top:1px solid #555555;
+            font-size: 1.8rem;
+            padding:45px 30px;
+            color: #fff;
+            text-align: left;
+        }
+        .footer p span{
+            float: right;
+        }
+        .bottom{
+            width: 100%;
+            position: fixed;
+            bottom: 0;
+        }
+        .bottom > div{
+            height: 6rem;
+            line-height: 6rem;
+            float: left;
+            font-size: 1.8rem;
+        }
+        .bottom .b-left{
+            padding-left: 45px;
+            width: 27rem;
+            color: #b1b1b1;
+            background-color: #4a4c52;
+        }
+        .bottom .b-left .money{
+            color: #cc3300;
+        }
+        .bottom .b-left .sum{
+            font-size: 1rem;
+            margin-left: 20px;
+        }
+        .bottom .b-right{
+            text-align: center;
+            color: #333;
+            width: 15rem;
+            background-color: #c1a55f;
+        }
+        .s-bar ul li{
+            display: inline-block;
+            height: 3.5rem;
+            line-height: 3.5rem;
+            text-align: center;
+            width: 8rem;
+            color:#cfa972;
+            font-size: 1.8rem;
+            border:1px solid #cfa972;
+            margin:0 0 30px 30px;
+        }
+    </style>
     <script src="jquery-3.3.1.js"></script>
 </head>
-<style>
-    *{
-        padding: 0;
-        margin: 0;
-    }
-    ul{
-        list-style-type: none;
-    }
-    body{
-        background-color: black;
-    }
-    .title{
-        width: 600px;
-        height:60px;
-        margin: 0 auto;
-        background-color: white;
-        font-size: 25px;
-    }
-    .title-1{
-        width: 598px;
-        height:60px;
-        margin: 0 auto;
-        background-color: black;
-        border: 1px solid white;
-    }
-    .title-1 ul li{
-        width: 40px;
-        height: 30px;
-    }
-    .one{
-        background-color: white;
-        float: left;
-        margin: 15px 30px;
+<body>
+<div class="container">
+    <div class="header">
+        <div class="date">
+            <p>今天1月6日&nbsp;13:20</p>
+        </div>
+        <div class="prompt">
+            <ul>
+                <li><span class="color-type1"></span><span class="text">可选</span></li>
+                <li><span class="color-type2"></span><span class="text">已选</span></li>
+                <li><span class="color-type3"></span><span class="text">已售</span></li>
+            </ul>
+        </div>
+        <div class="img">
+            <img src="7~%7B3VD$BQ%5D%60G$%606%25%60TD%60MM2.png">
+        </div>
+    </div>
+    <div class="content" id="list-content">
 
-    }
-    .two{
-        background-color: red;
-        float: left;
-        margin: 15px 30px;
-    }
-    .three {
-        background-color: blue;
-        float: left;
-        margin: 15px 30px;
-    }
+    </div>
+    <div class="footer">
+        <p>已选座位<span>最多可选择5个座位</span></p>
+    </div>
+    <div class="s-bar" id='js-s-bar'>
 
-    .top{
-      text-align: center;
-    }
-    .y11{
-        position: relative;
-        top:-38px ;
-        left: 78px;
-        color: white;
-    }
-    .y22{
-        position: relative;
-        top:-38px ;
-        left: 177px;
-        color: white;
-    }
-    .y33{
-        position: relative;
-        top:-38px ;
-        left: 237px;
-        color: white;
-    }
-    .content ul{
-        width: 642px;
-        height:700px ;
-        margin: 0 auto;
-    }
-    .content li{
-        width: 40px;
-        height: 30px;
-        background-color: white;
-        margin: 25px  10px;
-        float: left;
+    </div>
+    <div class="bottom">
+        <div class="b-left">
+            <span>合计：</span>
+            <span class="money" id="js-money">¥0</span>
+            <span class="sum" id="js-sum">¥99*0</span>
+        </div>
+        <div class="b-right">确认选座</div>
+    </div>
+</div>
+<script type="text/javascript">
 
+    var thisArr=[];
+    initlist();
+    function initlist() {
+        var listHtml=""
+        for ( var i=0;i<10;i++){
+            listHtml+="<ul class='content-list'>";
+            for ( var j=0;j<10;j++){
+                if(Math.random()>0.5){
+                    listHtml+='<li  class="empty" sign="'+(i+1)+'排'+(j+1)+'座"></li>'
+                }else{
+                    listHtml+='<li class="solid" sign="'+(i+1)+'排'+(j+1)+'座"></li>'
+                }
+            } listHtml+='</ul>'
+        }$("#list-content").html(listHtml)
     }
-.bottom{
-    border-top:0.2px solid white;
-    width: 598px;
-    height:140px;
-    margin: 0 auto;
+    $("#list-content").on("click","li",function () {
+        if($(this).attr("class")=="empty" && thisArr.length<5){
+            $(this).attr("class","selected");
+            thisArr.push($(this).attr("sign"));
+        }else if( $(this).attr("class")=="selected"){
+            $(this).attr("class","empty");
+            removeArr($(this).attr("sign"))
+        }
+        changeSelect();
+    })
+
+    function removeArr(arr) {//移除数组元素
+            for( var i=0;i<thisArr.length;i++){
+              if(thisArr[i]==arr){
+                  thisArr.splice(i,1);
+             }
+           }
+      }
+function  changeSelect(){
+       var thisHtml="<ul>";
+    for( var i=0;i<thisArr.length;i++){
+        thisHtml+="<li>"+thisArr[i]+"</li>"
+    }
+    thisHtml+="</ul>";
+    console.log(thisHtml);
+    $("#js-s-bar").html(thisHtml);
+    $("#js-money").html("￥"+thisArr.length*99);
+    $("#js-sum").html("99*"+thisArr.length)
+
 
 }
-    .bottom-1{
-        color: white;
-        margin-top:30px;
-        float: left;
-        font-size: 20px;
-    }
-    .bottom-2{
-        color: white;
-        margin-top:30px;
-        float: right;
-        font-size: 20px;
-    }
-    .aa{
-        width: 598px;
-        height:100px;
-        margin: 0 auto;
-    }
-    .bottom-3 {
-        width: 370px;
-        height: 100px;
-        background-color: #666666;
-        font-size: 20px;
-        float: left;
-        line-height: 100px;
-        padding-left: 30px ;
-    }
-    .bottom-4{
-        width: 198px;
-        height:100px;
-        line-height: 100px;
-        background-color: #ffac13;
-        float: left;
-        font-size: 20px;
-        text-align: center;
-
-    }
-</style>
-<body>
-<div class="title">今天是1月6日  13:20</div>
-<div class="title-1">
-    <ul>
-        <li class="one"></li>
-        <li class="two"></li>
-        <li class="three"></li>
-        <li class="y11">可选</li>
-        <li class="y22">已选</li>
-        <li class="y33">已售</li>
-    </ul>
-</div>
-<div class="top"><img src="7~%7B3VD$BQ%5D%60G$%606%25%60TD%60MM2.png"></div>
-<div class="content">
-    <ul>
-        <li class="top-1"></li>
-        <li class="top-1"></li>
-        <li class="top-1"></li>
-        <li class="top-1"></li>
-        <li class="top-1"></li>
-        <li class="top-1"></li>
-        <li class="top-1"></li>
-        <li class="top-1"></li>
-        <li class="top-1"></li>
-        <li class="top-1"></li>
-    </ul>
-
-    <div class="bottom">
-        <div class="bottom-1">已选座位</div> 已选座位
-    <div class="bottom-2">最多可选择5个座位</div>
-        已选座位
-</div>
-    <div class="aa">
-<div class="bottom-3">合计:</div>
-    <div class="bottom-4">确认选座</div>
-    </div>
-<script>
-    $("li:nth-child(6)").css("margin-left","52px");
-    $(".top-1").clone().prependTo(".content>ul");
-    $(".top-1").clone().prependTo(".content>ul");
-    $(".top-1").clone().prependTo(".content>ul");
 
 
-
-
-
-
+//
+//    var thisArr=[];
+//    initlist();
+//    function  initlist() {
+//    var listHtml="";
+//    for( var i=0;i<10;i++){
+//      listHtml+="<ul class='content-list'>";
+//      for( var j=0;j<10; j++){
+//        if(Math.random()>0.5){
+//              listHtml+='<li class="empty" sign="'+(i+1)+'排'+(j+1)+'座 "></li>';
+//        }else{
+//              listHtml+='<li class="solid" sign="'+(i+1)+'排'+(j+1)+'座 "></li>';
+//          }
+//      }
+//      listHtml+='</ul>'
+//  }
+//    $("#list-content").html(listHtml)
+//    }
+//$("#list-content").on("click","li",function () {
+//          if($(this).attr("class")=="empty" && thisArr.length<5){
+//              $(this).attr("class","selected");
+//              thisArr.push($(this).attr("sign"));
+//          }else if( $(this).attr("class")=="selected"){
+//              $(this).attr("class","empty");
+//              removeArr($(this).attr("sign"))
+//          }
+//    changeSelect();
+//})
+//
+//    function removeArr(arr) {//移除数组元素
+//        for( var i=0;i<thisArr.length;i++){
+//            if(thisArr[i]==arr){
+//                thisArr.splice(i,1);
+//            }
+//        }
+//    }
+//
+//    function changeSelect() {
+//        var thisHtml="<ul>";
+//        for( var i=0;i<thisArr.length;i++){
+//            thisHtml+="<li>"+thisArr[i]+"</li>"
+//        }
+//        thisHtml+="</ul>";
+//        $("#js-s-bar").html(thisHtml);
+//        $("#js-money").html("￥"+thisArr.length*99);
+//        $("#js-sum").html("￥99*"+thisArr.length);
+//    }
 
 </script>
 </body>

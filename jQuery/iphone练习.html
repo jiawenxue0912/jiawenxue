@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="jquery-3.3.1.js"></script>
+<style>
+    ul{
+        list-style-type: none;
+    }
+</style>
+<body>
+<input type="text"  id="inp">
+
+    <p>iphone</p>
+    <p>phone</p>
+    <p>iphone8</p>
+    <p>photo</p>
+    <p>ipod</p>
+
+<script>
+    $("#inp").keyup(function () {
+        $("p").css("background","none");
+        if($(this).val()!=""){
+        $("p:contains("+$(this).val()+")").css("background-color","red");
+        }
+    })
+
+
+
+
+
+
+</script>
+</body>
+</html>
