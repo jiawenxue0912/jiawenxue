@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="jquery-3.3.1.js"></script>
+    <style>
+        .one{
+            height: 2000px;
+        }
+        textarea{
+            width: 150px;
+            height: 200px;
+            overflow: scroll;
+        }
+
+    </style>
+</head>
+<body>
+<button class="got-op">返回顶部</button>
+<!--<button class="animate1">放大</button>-->
+<!--<button class="animate">缩小</button><br>-->
+<div class="one">
+<textarea  class="body">多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化
+    多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化
+多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化
+多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化
+多行文本框高度变化多行文本框高度变化多行文本框高度变化多行文本框高度变化</textarea>
+</div>
+<script>
+    $(".got-op").click(function () {
+        $("textarea").animate({
+            scrollTop:0
+            },1000)
+    })
+
+
+//    $(".animate1").click(function () {
+//        $(".body").animate({
+//            width: '+=100',
+//            height:'+=100'
+//        },1000)
+//    })
+//    $(".animate").click(function () {
+//        $(".body").animate({
+//            width: '-=100',
+//            height:'-=100'
+//        },1000)
+//    })
+
+
+
+
+
+
+
+</script>
+</body>
+</html>
