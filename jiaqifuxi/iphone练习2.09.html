@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="../jQuery/jquery-3.3.1.js"></script>
+<body>
+<input type="text" id="tnp">
+<p>iphone</p>
+<p>phone</p>
+<p>iphone8</p>
+<p>photo</p>
+<p>ipod</p>
+<script>
+$("#tnp").keyup(function () {
+    $("p").css("background","none");
+    if($(this).val()!=""){
+    $("p:contains("+$(this).val()+")").css("background","red")
+    }
+})
+</script>
+</body>
+</html>
