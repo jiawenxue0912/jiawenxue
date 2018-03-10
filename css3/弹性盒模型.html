@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        .box{
+            display: -webkit-box;
+            -webkit-box-pack: center;
+            /*-webkit-box-orient:vertical ;垂直排列*/
+
+        }
+        .box div{
+            height: 100px;
+            width: 100px;
+
+            /*float: left;*/
+            /*display: inline-block;*/
+            /*-webkit-box-flex: 1;*/
+        }
+        .div1{
+            background: yellow;
+            -webkit-box-ordinal-group: 1;
+        }
+        .div2{
+            background: #f56600;
+            -webkit-box-ordinal-group: 2;
+        }
+        .div3{
+            background: greenyellow;
+            -webkit-box-ordinal-group: 3;
+        }
+        .div4{
+            background: deepskyblue;
+            -webkit-box-ordinal-group: 1;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+</div>
+<div>
+    <div class="center"></div>
+    <div class="left"></div>
+    <div class="right"></div>
+</div>
+</body>
+</html>
