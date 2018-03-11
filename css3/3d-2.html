@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .box{
+        margin: 100px  auto;
+        width: 200px;
+        height: 200px;
+        border: 1px dashed black;
+        perspective: 1000px;
+        /*perspective-origin: 1000px 1000px ;*/
+        perspective-origin:center center;
+    }
+    .box div{
+        position: absolute;
+        top:0;
+        left: 0;
+        transition: all 1s linear;
+    }
+    .div1{
+        width: 200px;
+        height: 200px;
+        background: red;
+        transform-style: preserve-3d;
+
+    }
+    .div1:hover{
+        transform: rotateY(180deg);
+    }
+    .div2{
+        width: 200px;
+        height: 200px;
+        background: greenyellow;
+        transform: rotateY(180deg) translateZ(1px);
+    }
+</style>
+<body>
+<div class="box">
+    <div class="div1">
+        小伙伴20
+        <div class="div2">
+            weichuangwangxun
+        </div>
+    </div>
+</div>
+</body>
+</html>

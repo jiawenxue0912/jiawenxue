@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    ul{
+        list-style-type: none;
+    }
+    .box{
+        position: absolute;
+        left: 540px;
+        top:50px;
+        width: 200px;
+        height: 200px;
+        border: 1px dashed black;
+    }
+    .clock{
+        height: 196px;
+        width: 196px;
+        border: 1px solid #000000;
+        border-radius:50%;
+    }
+    .clock li{
+        position: absolute;
+        left:50%;
+        top:1px;
+        margin-left: -1px;
+        width: 2px;
+        height: 5px;
+        background: #000000;
+        transform-origin: 0 98px;
+    }
+    .clock li:nth-child(5n+1){
+        height: 8px;
+    }
+    .box div{
+        position: absolute;
+        left:50%;
+    }
+    .hour {
+        position: absolute;
+        top: 70px;
+        left: 100px;
+        width: 6px;
+        height: 30px;
+        background: #010001;
+        margin-left: -3px;
+    }
+    .min {
+        position: absolute;
+        top: 50px;
+        left: 100px;
+        width: 4px;
+        height: 50px;
+        background: blue;
+        margin-left: -2px;
+    }
+    .sec {
+        position: absolute;
+        top: 30px;
+        left: 100px;
+        width: 2px;
+        height: 70px;
+        background: red;
+        margin-left:-1px ;
+    }
+
+</style>
+<body>
+<div class="box">
+        <ul class="clock" id="clock-box">
+
+        </ul>
+        <div class="sec" id="clock-sec"></div>
+        <div class="min" id="clock-min"></div>
+        <div class="hour" id="clock-hour"></div>
+
+</div>
+<script>
+    var oClock=document.getElementById("clock-box");
+    var oHour = document.getElementByIde('clock-hour');
+    var oMinute = document.getElementById('clock-min');
+    var oSecond = document.getElementById('clock-sec');
+    for(var i=0;i<60;i++){
+        oClock.innerHTML+='<li style="transform: rotate('+6*i+'deg)"></li>'
+    }
+    clock();
+    function clock() {
+    var timer=new Date ;
+    var hour=timer.getHours()+minute/60;
+    var minute=timer.getMinutes()+second/60;
+    var second=timer.getSeconds();
+    oSecond.style.transform='rotate(' +second * 6 + 'deg)';
+    oMinute.style.transform='rotate(' +minute * 6 + 'deg)';
+    oHour.style.transform='rotate(' + hour* 30 + 'deg)';
+    }
+    setInterval(function () {
+        clock()
+    },1000)
+
+
+
+
+
+
+
+
+
+//    var hour = document.getElementsByClassName('hour');
+//    var min = document.getElementsByClassName('min');
+//    var sec = document.getElementsByClassName('sec');
+//    for(i=0;i<60;i++){
+//        clock[i].transform=rotate(i*6)+"deg";
+//
+//    }
+//    function aa (){
+//        var time = new Date();
+//        sec.style.Transform = 'rotate(' + time.getSeconds() * 6 + 'deg)';
+//        min.style.Transform = 'rotate(' + (time.getMinutes() + time.getSeconds() / 60) * 6 + 'deg)';
+//        hour.style.Transform = 'rotate(' + (time.getHours() % 12 + time.getMinutes() / 60 + time.getSeconds() / 3600) * 30 + 'deg)';
+//        console.log(sec.style.Transform);
+//    }aa ();
+//
+//    setInterval(aa, 1000);
+
+</script>
+</body>
+</html>
+
+
+
