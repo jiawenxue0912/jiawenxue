@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>手机调查问卷</title>
+</head>
+<style>
+
+
+</style>
+<body bgcolor="yellow">
+<h1 align="center">2017年度手机问卷调查表</h1><br>
+<form>
+    <fieldset>
+        <legend>个人资料</legend>
+        姓&nbsp;&nbsp;&nbsp; 名:<input type="text"><br><br>
+        E -mail:<input type="password"><br><br>
+        年   龄:<input type="radio" name="age">未满20岁
+        <input type="radio" name="age" checked>20~29&nbsp;&nbsp;
+        <input type="radio" name="age">30~39&nbsp;&nbsp;
+        <input type="radio" name="age">40~49&nbsp;&nbsp;
+        <input type="radio" name="age">五十岁以上&nbsp;&nbsp;
+    </fieldset>
+    <fieldset>
+        <legend>手机方面存在问题</legend><br>
+        曾经使用过哪些厂商的手机<input type="checkbox" name="card">iphone
+        <input type="checkbox" name="card" >小米
+        <input type="checkbox" name="card">华为
+        <input type="checkbox" name="card">三星
+        <input type="checkbox" name="card">OPPO<br><br>
+        使用手机的过程中出现过哪些问题<br>
+        <textarea >线路太忙</textarea><br><br>
+        您使用哪些移动网络？（可复选）<br>
+        <select name="network" multiple>
+            <option selected>中国移动</option>
+            <option >中国联通</option>
+            <option >中国铁通</option>
+            <option >中国电信</option>
+            <option >其他</option>
+        </select><br><br>
+        <input type="submit" value="提交">&nbsp;&nbsp;&nbsp;
+        <input type="reset" value="重新输入">
+    </fieldset>
+</form>
+</body>
+</html>
