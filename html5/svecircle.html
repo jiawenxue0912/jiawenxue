@@ -5,7 +5,6 @@
   <title>Title</title>
   <style>
     svg{
-
     }
     #box{
       position: relative;
@@ -37,21 +36,31 @@
     <div id="count">10</div>
   </div>
   <script>
-    var oCir = document.querySelector("#cir");
-    var oCount = document.querySelector("#count");
+    var oCir=document.querySelector("#cir");
+    var oCount=document.querySelector("#count");
     var t=10;
-    var once = 628/10;
-    var timer = setInterval(function () {
+    var timer=setInterval(function () {
         oCount.innerHTML = t;
         t--;
         if(t<0){
-           clearInterval(timer);
+            clearInterval(timer);
         }else{
-
-          oCir.style.strokeDashoffset = once*t-628;
+            oCir.style.strokeDashoffset=628/10*t-628 ;
         }
-
     },1000)
+//    var oCir = document.querySelector("#cir");
+//    var oCount = document.querySelector("#count");
+//    var t=10;
+//    var once = 628/10;
+//    var timer = setInterval(function () {
+//        oCount.innerHTML = t;
+//        t--;
+//        if(t<0){
+//           clearInterval(timer);
+//        }else{
+//          oCir.style.strokeDashoffset = once*t-628;
+//        }
+//    },1000)
   </script>
 </body>
 </html>

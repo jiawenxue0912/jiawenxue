@@ -4,26 +4,25 @@
   <meta charset="UTF-8">
   <title>Title</title>
   <style>
-    #draw{
-      background: #000000;
-    }
+    #cvs{  background: #000000;  }
   </style>
 </head>
 <body>
-  <canvas width="400" height="400" id="draw"></canvas>
+  <canvas width="400" height="400" id="cvs"></canvas>
   <script>
-    var oDiv = document.querySelector("#draw");
-    var draw = oDiv.getContext("2d");
-    oDiv.onmousedown = function (e) {
-        draw.beginPath();
-        draw.moveTo(e.clientX,e.clientY);
-        oDiv.onmousemove = function (e) {
-            draw.lineTo(e.clientX,e.clientY);
-            draw.strokeStyle = "#ffffff";
-            draw.stroke();
+    
+    var oCvs=document.querySelector("#cvs");
+    var context=oCvs.getContext("2d");
+    oCvs.onmousedown=function (e) {
+        context.beginPath();
+        context.moveTo(e.clientX,e.clientY);
+        context.strokeStyle="#00ff00";
+        oCvs.onmousemove=function (e) {
+            context.lineTo(e.clientX,e.clientY);
+            context.stroke();
         }
-        oDiv.onmouseup = function () {
-            oDiv.onmousemove = null;
+        oCvs.onmouseup=function () {
+            oCvs.onmousemove="";
         }
     }
   </script>
