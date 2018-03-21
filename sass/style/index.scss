@@ -1,0 +1,30 @@
+$first:#ccc;
+.div1{
+  color:$first;
+  .div4{
+    margin:0;
+    padding:0;
+  }
+  &:hover{
+    color:$first
+  }
+}
+/*danhangzhushi*/
+/*!qiangzhizhushi*/
+.div3{
+  background: {
+    color: rebeccapurple;
+  };
+}
+@mixin aa($h:500px,$w:600px){
+  width: $w;
+  height:$h ;
+}
+.div5{
+  @include  aa($h:800px,$w:600px)
+}
+.div6{
+  @extend .div5;
+  font-size: 19px;
+}
+@import "imp";
