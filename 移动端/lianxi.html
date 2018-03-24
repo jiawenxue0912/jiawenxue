@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    .clearfix:after{
+        content: "";
+        display: block;
+        clear: both;
+    }
+    header,nav,footer{
+        height: 100px;
+        background-color: #8c8c8c;
+        width: 100%;
+        max-width: 960px;
+        margin: 10px auto;
+        text-align: center;
+        line-height: 100px;
+    }
+    article,img{
+        max-width: 960px;
+        width: 100%;
+        margin: 0 auto;
+    }
+    section {
+        height: 300px;
+        float: left;
+        text-align: center;
+        display: table;
+    }
+    p{
+        display: table-cell;
+        vertical-align: middle;
+        height: 100%
+    }
+    article{
+    display: table;
+}
+    .right{
+        background-color: greenyellow;
+        width: 25%;
+        margin-left: 5%;
+    }
+    .left{
+        background-color: gold;
+        width: 70%;
+    }
+@media (max-width: 600px){
+    .clearfix section{
+        width: 100%;
+        margin: 10px 0 0 0 ;
+    }
+}
+
+</style>
+<body>
+<header>页头</header>
+<nav>导航</nav>
+<article >
+    <img src="Cache_-52e283fcf5f2f156..jpg">
+</article>
+<article class="clearfix">
+    <section class="left">
+        <p>Life is full of confusing and disordering Particular time,a particular location,Do the arranged thing of ten million time in the brain,Step by step ,the life is hard to avoid delicacy and stiffness No enthusiasm forever,No unexpected happening of surprising and pleasing So,only silently ask myself in mind Next happiness,when will come?</p>
+    </section>
+    <section class="right">
+        <p>Always insisting.Use iron scoop is too cold; Use porcelain scoop is too weak; A wood scoop,engraved veins safely,engraved sky’s wasteland and glebe’s old.Just as happiness born in the years,not insolent,the every act and move blooms quietly</p>
+    </section>
+</article>
+<footer>页脚</footer>
+</body>
+</html>
