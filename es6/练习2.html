@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //es5
+
+    var funcs = []
+          for (var i = 0; i < 10; i++) {
+      func.push((function(value) {
+    return function() {
+    console.log(value)
+    }
+    }(i)))
+    }
+// es6
+    for (let i = 0; i < 10; i++) {
+    func.push(function() {
+    console.log(i)
+})
+}
+</script>
+</body>
+</html>
