@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function foo() {
+        this.name="aaa";
+    }
+    console.log(foo.prototype);
+    function foo() {
+        this.name="aaa";
+        this.age="12"
+    }
+    var dia=new foo();
+    console.log(dia.__proto__);
+</script>
+</body>
+</html>
