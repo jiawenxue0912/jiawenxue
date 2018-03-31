@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+//    function foo(a,b,c="ccc") {
+//        console.log(pra1,pra2)
+//    }foo("aaa","bbb")
+//
+//    function foo() {
+//
+//    }console.log(foo)
+//
+//    function foo() {
+//
+//    }console.log(foo.name)
+//
+//    function foo() {
+//
+//    }console.log(foo.prototype)
+//
+//    function foo(a,b="b",c) {
+//        console.log(a,b,c)
+//    }foo();
+//    console.log(foo.length)// 1  如果有默认参数后边不计入
+
+//    function foo(a,...arg) {
+//        console.log(a,arg);
+//    }
+//    foo(1,2,3,4,5);
+//    console.log(foo.length);//剩余不计入函数
+
+//     "use strict";
+//      var a=6;
+//      console.log(a);
+
+//      function foo(a) {
+//          console.log(this)
+//      }foo();
+//      function foo(a,a,b) {
+//          console.log(a,a,b)
+//      }foo(1,2,3);
+
+//      var obj={
+//          name:"123",
+//          age:34
+//      }
+//      var name="aaa";
+//      with(obj){
+//        console.log(name);
+//     }
+//      console.log(obj.name)
+
+
+//    function foo(key) {
+//        if(key==1){
+//            return 1
+//        }else{
+//            arguments.callee(key-1);
+//            console.log(key)
+//        }
+//    }foo(10);
+
+    //箭头函数
+//
+    let foo=(a,b)=>{console.log(a,b);};
+    foo("1","2");
+
+    let foo=(a,b)=>a+b;
+    console.log(foo(1,3))
+
+    let foo=(a)=>{
+        console.log(arguments)//不支持
+    };
+    foo("1","3")
+    let foo=(...a)=>{
+    console.log(a)//支持
+    };
+    foo("1","3")
+
+    function Person() {
+        this.name="aa";
+    }
+    var person=new Person();
+    console.log(person.name );
+    console.log(person.__proto__)
+
+    let obj={
+        timer:function () {
+            setInterval(()=> {
+                console.log(this)//指向声明时候的函数timer
+            },100)
+        }
+    }
+    obj.timer();
+</script>
+</body>
+</html>
