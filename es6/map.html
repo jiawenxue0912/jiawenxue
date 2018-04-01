@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+    let obj={name:"xiaoming"};
+    let  obj1={0:"number"};
+
+    let newMap=new Map();
+    newMap.set(obj1,"111");
+    console.log(newMap.get(obj1));
+    console.log(newMap.delete(obj1));
+    newMap.set(obj,"222");
+    console.log(newMap);
+
+for(let item of newMap.key){
+    console.log(item)
+}
+    for(let item of newMap.values()){
+        console.log(value)
+    }
+
+    for(let item of newMap.entries()){
+        console.log(key,value)
+    }
+
+</script>
+</body>
+</html>
