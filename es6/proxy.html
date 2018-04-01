@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+//    let obj=new Proxy({
+//        name:"xiaohong",
+//    },
+//        {
+//        get:function (target,key,property) {
+//            console.log("get")
+//    },
+//        set:function (target,key,value,receiver) {
+//            console.log("set")
+//    }
+//    })
+//    obj.name="aaa";
+//    console.log(obj.name)
+
+    function targer() {
+        console.log("targer");
+        return 'targer'
+    }
+function handler() {
+    console.log("handler");
+    return 'handler'
+}
+    let foo=new Proxy(target,handler);
+    console.log(foo);
+    foo();
+</script>
+</body>
+</html>
