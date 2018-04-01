@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function Person(name,age) {
+        this.name=name;
+        this.age=age;
+    }
+    Person.prototype.showInof=function () {
+        console.log(`姓名:${this.name}年龄:${this.age}`)
+    }
+    let person1=new Person("xiaoming","17");
+    person1.showInof();
+
+    function Teacher(name,age) {
+        Person.call(this,name,age)
+    }
+    Teacher.prototype=new Person();
+    let teacher1=new Teacher("zs","30");
+    teacher1.showInof();
+
+
+
+    class Person{
+        constructor(name,age){
+            this.name=name;
+            this.age=age;
+        }
+        showInof(){
+            console.log(`姓名:${this.name}年龄:${this.age}`)
+        }
+    }
+    let person1=new Person("xiaoming","17");
+    person1.showInof();
+    class Teacher extends Person{
+        constructor(name,age){
+            super(name,age)
+        }
+      showSchool(){
+            console.log(`姓名:${this.name}年龄:${this.age}`)
+      }
+    }
+    let teacher1=new Teacher("li","30");
+        teacher1.showInof();
+        teacher1.showSchool()
+
+</script>
+</body>
+</html>
