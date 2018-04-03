@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //有JS实现一个类对象及成员方法的链式调用方法（不能用ES6）例如 new Box(100,100,'red').addTo('bod
+    //d').delay(3).remove(),最终实现创建两个宽高为100px的红色正方形盒子并添加到body,然后再显示3秒后全部移除
+
+    function Box(w, h, c) {
+        this.width = w;
+        this.height = h;
+        this.bgColor = c;
+    }
+    Box.prototype.addTo = function(selector){
+        this.holder = [];
+        var s = selector.charAt(0);
+        switch(s){
+            case '#':
+                this.holder.push[document.getElementById(selector.substr(1))];
+                break;
+            case '.':
+                this.holder = document.getElementsByClassName(selector.substr(1));
+                break;
+            default:
+                this.holder = document.getElementsByTagName(selector);
+        }
+        this.box = document.createElement('div');
+        this.box.style.width = this.width + 'px';
+        this.box.style.height = this.height + 'px';
+        this.box.style.backgroundColor = this.bgColor;
+        this.holder[0].appendChild(this.box);
+        return this;
+    };
+    Box.prototype.delay = function(time){
+        this.delay = time;
+        return this;
+    };
+    Box.prototype.remove = function(){
+        var that = this;
+        if(this.delay){
+            setTimeout(function(){
+                that.holder[0].removeChild(that.box);
+            }, this.delay);
+        }else{
+            this.holder[0].removeChild(this.box);
+        }
+    };
+
+    new Box(100,100,'red').addTo('body').addTo('body').delay(30).remove();
+
+
+
+
+</script>
+</body>
+</html>
