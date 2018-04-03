@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    //有JS实现以下键值对对象按Key得ASCLL编码从下到大排序：
+    //{a:'A',console:'log',c:'C',ajax:'Ajax',react:'React',refresh:'F5',vuex:'Vuex',vue:'Vue.js'}
+    var o = {
+        a: 'A',
+        console: 'log',
+        c: 'C',
+        ajax: 'Ajax',
+        react: 'React',
+        refresh: 'F5',
+        vuex: 'Vuex',
+        vue: 'Vue.js'
+    };
+
+    function sortKey(obj){
+        var rs  = [];
+        for(var p in obj){
+            rs.push(p);
+        }
+        return rs.sort();
+    }
+
+</script>
+</body>
+</html>
