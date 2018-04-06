@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+    }
+    .header{
+        width: 1130px;
+        margin: 0 auto;
+        line-height: 0;
+    }
+    .header a{
+        display: block;
+    }
+    .content{
+        height: 588px;
+        background-position: center;
+        background-image: url("img/2.jpg");
+    }
+    .content .login-bar{
+    width: 1130px;
+    margin: 0 auto;
+}
+    .content .login-form{
+        background-color: white;
+        width: 410px;
+        height: 524px;
+        float: right;
+        margin-top:32px;
+    }
+    .content .top-text{
+        padding: 27px 0 24px;
+        text-align: center;
+        font-size: 24px;
+    }
+    .content .top-text a{
+        text-decoration: none;
+        color: #666666;
+    }
+    .content .border-line{
+        width: 1px;
+        height: 24px;
+        margin: 0 35px 0 42px;
+        border: 1px solid #e0e0e0
+    }
+    .content .top-text a:first-child{
+        color: #f56600;
+    }
+    .content .top-text a:hover{
+        color: #f56600;
+    }
+    .content .login-content{
+        width: 348px;
+        margin:auto;
+    }
+    .content  .login-input input{
+        font-family: arial,"Hiragino Sans GB","Microsoft YaHei","微軟正黑體","儷黑 Pro",sans-serif;
+        font-size: 16px;
+        width: 314px;
+        height: 22px;
+        line-height: 22px;
+        padding: 13px 16px 13px 14px;
+        display: block;
+        margin-bottom: 14px;
+    }
+    .login-btn input{
+        background-color: #f56600;
+        width: 348px;
+        height:50px;
+        border: 0;
+        font-size: 14px;
+        color: white;
+        cursor: pointer;//光标呈现一只手
+        margin-bottom: 10px;
+    }
+    .content .small-text{
+        font-size: 14px;
+        color: #757575
+    }
+    .content .small-text a{
+        text-decoration: none;
+        color: #757575
+    }
+    .content .st-left a {
+        color: #f56600;
+    }
+    .content .st-left{
+        float: left;
+    }
+    .content .st-right{
+        float: right;
+    }
+
+    .content .st-right a:hover{
+        color: #f56600;
+    }
+    .content .login-type fieldset{
+        border: 0px;
+        border-top:1px solid #dddddd;
+        color: #bbbbbb;
+        font-size: 14px;
+        padding-top: 10px;
+    }
+    .content .login-type{
+        margin-top: 115px;
+    }
+    .content .login-icon{
+        text-align: center;
+    }
+
+    .login-icon a {
+        width: 30px;
+        height: 30px;
+        background-color: #757575;
+        display: inline-block;
+        border-radius: 50%;
+        margin: 0 17px;
+    }
+    .login-icon i{
+        display: block;
+        width: 18px;
+        height: 18px;
+        background-image: url("img/3.png");
+        margin: 4px auto;
+    }
+    .qq:hover{
+        background-color: #0288d1;
+    }
+    .qq i{
+        background-position: -19px 0;
+    }
+    .sina:hover{
+        background-color: #d32f2f;
+    }
+    .sina i{
+        background-position:-38px 0;
+    }
+    .alipay:hover{
+        background-color:#0288d1 ;
+    }
+    .alipay i{
+        background-position:-57px 0;
+        width: 25px;
+    }
+    .wechat:hover{
+        background-color: green;
+    }
+    .wechat i{
+        background-position:-84px 0;
+        width: 23px;
+    }
+</style>
+<body>
+<div class="header">
+    <a >
+        <img src="img/1.png">
+    </a>
+</div>
+<div class="content">
+    <div class="login-bar">
+        <div class="login-form">
+            <div class="top-text">
+                <a href="">账号登录 </a>
+                <span class="border-line"></span>
+                <a href="">扫码登录</a>
+            </div>
+            <div class="login-content">
+                <div class="login-input">
+                    <input type="text" placeholder="邮箱/手机号/小米id"><br>
+                    <input type="text" placeholder="密码" >
+                </div>
+                <div class="login-btn">
+                    <input type="submit" value="登录">
+                </div>
+                <div class="small-text">
+                    <div class="st-left">
+                        <a href="">手机短信登录/注册</a>
+                    </div>
+                    <div class="st-right">
+                        <a href="">立即注册</a>
+                        <span>|</span>
+                        <a href="">忘记密码？</a>
+                    </div>
+                </div>
+                <div class="login-type">
+                    <fieldset >
+                        <legend align="center" >其他方式登录</legend>
+                    </fieldset>
+                    <div class="login-icon">
+                        <a href="" class="qq">
+                            <i></i>
+                        </a>
+                        <a href="" class="sina">
+                            <i></i>
+                        </a>
+                        <a href="" class="alipay">
+                            <i></i>
+                        </a>
+                        <a href="" class="wechat">
+                            <i></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
