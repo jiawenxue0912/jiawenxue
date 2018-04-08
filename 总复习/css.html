@@ -7,29 +7,56 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
+<style>
+    .div1{
+        width: 200px;
+        height: 400px;
+        background: green;
+        /*1.float: left;*!*/
+        /*2.position: absolute;*!*/
+
+    }
+    .div2{
+        height: 400px;
+        background: gold;
+        /*margin-left: 200px;*/
+        /*3.-webkit-box-flex: 1;*/
+    }
+    .div3{
+        display: -webkit-box;
+    }
+</style>
 <body>
-css选择器：
-1.id选择器
-2.class选择器
-3.标签选择器
-4.后代选择器
-5.子代选择器
-6.多类选择器
-7.伪类选择器
-8.分组选择器
-9.属性选择器
-10.兄弟选择器
 
-盒模型：1.W3C标准盒模型  2.怪异盒模型
-标准盒模型宽高指的是内容的宽高
-怪异盒模型的宽高指的是加padding和border
+<!--两列布局：左边宽度固定，右边自适应-->
+<div class="div3">
+    <div class="div1"></div>
+    <div class="div2"></div>
+</div>
 
-position:static  relative  absolute  fixed
-相对定位 relative：相对于自己的初始位置，设置定位时的位置。
-绝对定位 absolute：相对于离他最近的已经定位的祖先元素，如果祖先未设定，相对于body，绝对定位会脱离文档流
+<!--css选择器：-->
+<!--1.id选择器-->
+<!--2.class选择器-->
+<!--3.标签选择器-->
+<!--4.后代选择器-->
+<!--5.子代选择器-->
+<!--6.多类选择器-->
+<!--7.伪类选择器-->
+<!--8.分组选择器-->
+<!--9.属性选择器-->
+<!--10.兄弟选择器-->
 
-浮动：float:left  right
-clear:both
+<!--盒模型：1.W3C标准盒模型  2.怪异盒模型-->
+<!--标准盒模型宽高指的是内容的宽高-->
+<!--怪异盒模型的宽高指的是加padding和border-->
+
+<!--position:static  relative  absolute  fixed-->
+<!--相对定位 relative：相对于自己的初始位置，设置定位时的位置。-->
+<!--绝对定位 absolute：相对于离他最近的已经定位的祖先元素，如果祖先未设定，相对于body，绝对定位会脱离文档流-->
+
+<!--浮动：float:left  right-->
+<!--clear:both-->
 
 
 </body>
