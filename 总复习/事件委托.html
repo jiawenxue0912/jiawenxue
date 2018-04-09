@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button id="btn1">添加</button>
+<ul id="ul1">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+</ul>
+<script>
+    var oUl=document.getElementById("ul1");
+    var oBtn=document.getElementById("btn1");
+    oBtn.onclick=function () {
+        var aa=document.createElement("li");
+        aa.innerHTML=Math.random();
+        oUl.appendChild(aa);
+    };
+    oUl.onclick = function (e) {    //兼容IE
+        var This=window.event.srcElement || e.target;
+        console.log(e.target);}
+
+</script>
+</body>
+</html>
