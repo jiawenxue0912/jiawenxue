@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+    /*三角形*/
+    /*#div1{*/
+        /*width: 0;*/
+        /*border-width: 30px;*/
+        /*border-right-color: #ffac13;*/
+        /*border-style: solid;*/
+        /*border-top-color: transparent;*/
+        /*border-bottom-color: transparent;*/
+        /*border-left-color:transparent;*/
+        /*background:gray;*/
+    /*}*/
+
+
+    .box{
+        position: relative;
+        top: 200px;
+        left: 600px;
+    }
+    .box img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        border:10px solid #dddddd;
+        box-shadow: 5px 5px 5px rgba(0,0,0,.5);
+        transition: all 1s linear ;
+    }
+    .box img:first-child{
+        transform: rotate(30deg);
+    }
+    .box img:last-child{
+        transform: rotate(-25deg);
+
+    }
+    .box img:hover{
+        transform: scale(1.5);
+        z-index: 1;
+    }
+
+</style>
+<body>
+
+<!--<div id="div1"></div>-->
+
+<div class="box">
+    <img src="img/xiaogou.jpg">
+    <img src="img/xiaogou3.jpg">
+</body>
+</html>
