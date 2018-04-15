@@ -47,13 +47,7 @@
             <th>商品价格</th>
             <th>删除</th>
         </tr>
-        <tr :class="{active:val.isActive}" v-for="(val,index) in infoList" @click = "listClick(val)">
-            <td><input type="checkbox" v-model="checkedList" :value="index"></td>
-            <td>{{ val.info }}</td>
-            <td>{{ val.time }}</td>
-            <td><button @click="delList(index)">删除</button></td>
-        </tr>
-        <tr><td><button @click="delChecked">删除选中</button></td><td>总用时：</td><td colspan="2">{{ csum }}</td></tr>
+       
     </table>
 </div>
 <script src="vue.js"></script>
