@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<div id="app">
+    <button @click="changColor">changes</button>
+    <div :v-test="aaa">自定义属性</div>
+    {{aaa}}
+</div>
+<div id="app2">
+    <div :v-test="bbb">
+        {{bbb}}
+    </div>
+</div>
+<script src="vue.js"></script>
+<script>
+    Vue.directive("test",{
+        bind(){
+            console.log('bind');
+            el.style.color=binding.value
+        },
+        inserted(){
+            console.log('inserted')
+        },
+        updata(){
+            console.log('updata');
+            el.style.color=binding.value;
+        },
+        componentUpdate(){
+            console.log('componentUpdate')
+        },
+        unbind(){
+            console.log('unbind')
+        }
+    });
+    new Vue({
+        el:"#app",
+        data:{
+            aaa:"yellow"
+        },
+        methods:{
+            changColor(){
+                this.aaa="blue"
+            }
+        }
+    });
+    new Vue({
+        el:"#app2",
+        data:{
+            bbb:"yellow"
+        },
+    })
+</script>
+</body>
+</html>
