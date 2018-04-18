@@ -17,6 +17,24 @@
 <div id="app" class="text-center">
     <h1>todolist</h1>
     <hr>
+    <form class="form-inline">
+        <div class="form-group">
+            <input v-model="keywords" @keyup.enter="search" type="text" class="form-control"  placeholder="请输入关键字">
+        </div>
+
+        <button type="button" class="btn btn-default btn-primary" @click="search">搜索</button>
+    </form>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="product-name">商品名称</label>
+            <input v-model="productName" type="text" class="form-control" id="product-name" placeholder="请输入商品名称">
+        </div>
+        <div class="form-group">
+            <label for="product-price">商品价格</label>
+            <input  v-model.number="productPrice" type="number" class="form-control" id="product-price" placeholder="请输入价格">
+        </div>
+        <button type="button" class="btn btn-default btn-primary" @click="addProduct">增加</button>
+    </form>
 <table class="table">
     <thead>
     <tr class="info">
@@ -27,22 +45,22 @@
     </tr>
     </thead>
     <tbody>
-    <tr v-for=" product in productList" @click="select(product)" :class="{red:product.isSelected}" >
-        <td><input type="checkbox" @click.stop v-model="checkedList" ></td>
+    <tr v-for=" (product,index) in productList" @click="select(product)" :class="{red:product.isSelected}">
+        <td><input type="checkbox" :value="index" @click.stop v-model="checkedList"></td>
         <td>{{product.name}}</td>
         <td>{{product.price}}</td>
-        <td><button  @click.stop="delproduct(index)" type="button" class="btn btn-warning glyphicon glyphicon-search btn-xs">X</button></td>
+        <td><button @click.stop="delproduct(index)" type="button" class="btn btn-warning glyphicon glyphicon-search btn-xs">X</button></td>
     </tr>
     <tr>
-        <td><button  @click="delchecked" type="button" class="btn btn-danger btn-xs">删除选中</button></td>
-        <td colspan="3">总价：{{sum}}</td>
+        <td><button @click="delchecked" type="button" class="btn btn-danger btn-xs">删除选中</button></td>
+        <td colspan="3">总价：{{sum}}元</td>
     </tr>
     </tbody>
 </table>
 </div>
 <script src="vue.js"></script>
-<script>
 
+<script>
     let vm =new Vue({
         el:"#app",
         data:{
@@ -69,21 +87,60 @@
                     price:88,
                     isSelected:false,
                 }],
-                sum:0
-        },methods:{
+            sum:0,
+            checkedList:[],
+            productName:'',
+            productPrice:'',
+            keywords:'',
+        },
+        methods:{
             select(product){
                 product.isSelected=!product.isSelected;
                 if(product.isSelected){
                     this.sum += product.price;
-                }else{
+                }else {
                     this.sum -= product.price;
                 }
             },
+            delproduct(index){
+                this.productList.splice(index,1)
+            },
+            delchecked(){
+                this.productList=this.productList.filter((item,index)=>{
+                    if(!this.checkedList.includes(index)){
+                        return item;
+                    }
+                });
+                this.checkedList=[]
+            },
+            addProduct(){
+                this.productList.push({
+                    name:this.productName,
+                    price:this.productPrice,
+                    isSelected:false,
+                });
+                this.productName=this.productPrice=""
+            },
+            search(){
+                this.productList=this.productList.filter((item)=>{
+                    if(item.name.includes(this.keywords)||item.name.tostring().includes(this.keywords)){
+                        return item;
+                    }
+                });
+                this.checkedList=[]
+            }
         },
-        delproduct(index){
-            this.productList.splice(index,1)
-        },
-
+//        computed:{
+//            csum(){
+//                let temp=0;
+//                this.productList.filter((item,index)=>{
+//                    if(this.isSelected){
+//                        temp+=item.price;
+//                    }
+//                });
+//                return temp;
+//            }
+//        }
     })
 
 </script>
