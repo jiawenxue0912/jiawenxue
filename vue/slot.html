@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <test>
+        <span slot="name">xiaoming</span>
+        <span slot="age">19 </span>
+    </test>
+</div>
+<template id="aaa">
+    <div>姓名<slot name:xiaoming></slot></div>
+    <div>年龄<slot age:19></slot></div>
+</template>
+<script src="vue.js"></script>
+<script>
+    Vue.complate("test",{
+        template:"#aaa"`
+        <div>
+            <div>姓名<slot name:xiaoming></slot></div>
+            <div>年龄<slot age:19></slot></div>
+        </div>`
+    }
+
+</script>
+</body>
+</html>
