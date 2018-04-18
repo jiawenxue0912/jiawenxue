@@ -7,47 +7,54 @@
     <link rel="stylesheet" href="bootstrap.min.css"  >
     <title>Document</title>
     <style>
-        .div1{
-            text-align: center;
-        }
-        input{
-            width: 230px;
-            height:35px;
-        }
-        table{
-            border-collapse: collapse;
-        }
-        table tr td,table tr th{
-            border:1px solid #dddddd
-        }
-        table tr.active{
-            background: #cccccc;
-        }
-        [v-cloak] {
-            display: none;
+        .red{
+            background-color: red;
         }
     </style>
 </head>
 <body>
-<h1 style="text-align:center">ToDoList</h1>
-<div class="div1">
-    <div>
-        <input type="text" placeholder="请输入关键字">
-        <button type="button" class="btn btn-primary">搜索</button><br>
-    </div>
-    <div>
-        商品名称<input type="text" placeholder="请输入商品名称">
-        商品价格<input type="text" placeholder="0">
-        <button type="button" class="btn btn-primary">添加</button>
-    </div>
-    <table>
-        <tr>
-            <th>选择</th>
-            <th>商品名称</th>
-            <th>商品价格</th>
-            <th>删除</th>
-        </tr>
+<div id="app" class="text-center">
+    <h1>todolist</h1>
+    <hr>
+    <form class="form-inline">
+        <div class="form-group">
+            <input v-model="keywords" @keyup.enter="search" type="text" class="form-control"  placeholder="请输入关键字">
+        </div>
 
+        <button type="button" class="btn btn-default btn-primary" @click="search">搜索</button>
+    </form>
+    <form class="form-inline">
+        <div class="form-group">
+            <label for="product-name">商品名称</label>
+            <input v-model="productName" type="text" class="form-control" id="product-name" placeholder="请输入商品名称">
+        </div>
+        <div class="form-group">
+            <label for="product-price">商品价格</label>
+            <input  v-model.number="productPrice" type="number" class="form-control" id="product-price" placeholder="请输入价格">
+        </div>
+        <button type="button" class="btn btn-default btn-primary" @click="addProduct">增加</button>
+    </form>
+    <table class="table">
+        <thead>
+            <tr class="info">
+                <td>选择</td>
+                <td>商品名称</td>
+                <td>商品价格</td>
+                <td>删除</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr v-for=" (product,index) in productList" @click="select(product)" :class="{red:product.isSelected}">
+                <td><input type="checkbox" :value="index" @click.stop v-model="checkedList"></td>
+                <td>{{product.name}}</td>
+                <td>{{product.price}}</td>
+                <td><button @click.stop="delproduct(index)" type="button" class="btn btn-warning glyphicon glyphicon-search btn-xs">X</button></td>
+            </tr>
+            <tr>
+                <td><button @click="delchecked" type="button" class="btn btn-danger btn-xs">删除选中</button></td>
+                <td colspan="3">总价：{{sum}}元</td>
+            </tr>
+        </tbody>
     </table>
 </div>
 <script src="vue.js"></script>
@@ -55,16 +62,96 @@
     let vm =new Vue({
         el:"#app",
         data:{
-            obj:[{
-                    name:"xiaoming4",
-                    age:"22",
-                    school:"heida"
+            productList:[
+                {
+                    name:'衣服',
+                    price:123,
+                    isSelected:false,
+                },{
+                    name:'裤子',
+                    price:456,
+                    isSelected:false,
+
+                },{
+                    name:'鞋',
+                    price:444,
+                    isSelected:false,
+                },{
+                    name:'帽子',
+                    price:66,
+                    isSelected:false,
+                },{
+                    name:'手套',
+                    price:88,
+                    isSelected:false,
+                }],
+                sum:0,
+                checkedList:[],
+                productName:'',
+                productPrice:'',
+                keywords:'',
+        },
+        methods:{
+            select(product){
+                product.isSelected=!product.isSelected;
+                if(product.isSelected){
+                    this.sum += product.price;
+                }else{
+                    this.sum -= product.price;
                 }
-            ]
+//                this.getSum();
+            },
+//            getSum(){
+//                this.productList.forEach((item,index)=>{
+//                    if(item.isSelected){
+//                        this.sum+=item.price;
+//                    }
+//                });
+            delproduct(index){
+                this.productList.splice(index,1)
+                },
+            delchecked(){
+                this.productList=this.productList.filter((item,index)=>{
+                        if(!this.checkedList.includes(index)){
+                            return item;
+                        }
+                    });
+                    this.checkedList=[]
+                 },
+            addProduct(){
+                this.productList.push({
+                    name:this.productName,
+                    price:this.productPrice,
+                    isSelected:false,
+                });
+                this.productName=this.productPrice=""
+            },
+            search(){
+
+                this.productList=this.productList.filter((item)=>{
+                    if(item.name.includes(this.keywords)||item.name.tostring().includes(this.keywords)){
+                        return item;
+                    }
+                });
+                this.checkedList=[]
+            }
+
+            },
+        computed:{
+            csum(){
+                let temp=0;
+                this.productList.filter((item,index)=>{
+                    if(this.isSelected){
+                        temp+=item.price;
+                    }
+                });
+                return temp;
+            }
         }
     })
 
 </script>
-<script src=""></script>
+<script src="jquery-3.3.1.js"></script>
+<script src="bootstrap.js"></script>
 </body>
 </html>
