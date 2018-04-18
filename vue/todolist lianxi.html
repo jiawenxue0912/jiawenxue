@@ -6,24 +6,20 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="bootstrap.min.css"  >
+    <link rel="stylesheet" href="bootstrap.min.css">
 </head>
 <style>
     .red{
-        background: red;
+        background-color: red;
     }
 </style>
 <body>
 <div id="app" class="text-center">
-    <h1>todolist</h1>
-    <hr>
-    <form class="form-inline">
-        <div class="form-group">
-            <input v-model="keywords" @keyup.enter="search" type="text" class="form-control"  placeholder="请输入关键字">
-        </div>
-
-        <button type="button" class="btn btn-default btn-primary" @click="search">搜索</button>
-    </form>
+<h1>todolist</h1>
+<hr>
+    <div>
+        <input type="text" v-model="search">
+        <button @click="searchList">搜索</button>
     <form class="form-inline">
         <div class="form-group">
             <label for="product-name">商品名称</label>
@@ -35,78 +31,80 @@
         </div>
         <button type="button" class="btn btn-default btn-primary" @click="addProduct">增加</button>
     </form>
+    </div>
 <table class="table">
-    <thead>
-    <tr class="info">
-        <td>选择</td>
+    <tr>
+        <td>选择 </td>
         <td>商品名称</td>
         <td>商品价格</td>
         <td>删除</td>
     </tr>
-    </thead>
-    <tbody>
-    <tr v-for=" (product,index) in productList" @click="select(product)" :class="{red:product.isSelected}">
+    <tr v-for="(product,index) in list" @click="select(product)" :class="{red:product.isselected}">
         <td><input type="checkbox" :value="index" @click.stop v-model="checkedList"></td>
         <td>{{product.name}}</td>
         <td>{{product.price}}</td>
         <td><button @click.stop="delproduct(index)" type="button" class="btn btn-warning glyphicon glyphicon-search btn-xs">X</button></td>
+
     </tr>
     <tr>
-        <td><button @click="delchecked" type="button" class="btn btn-danger btn-xs">删除选中</button></td>
-        <td colspan="3">总价：{{sum}}元</td>
+        <td><button @click.stop="delchecked" type="button" class="btn btn-danger">删除选中</button></td>
+        <td colspan="3">总价{{sum}}元</td>
+
     </tr>
-    </tbody>
 </table>
 </div>
 <script src="vue.js"></script>
-
 <script>
-    let vm =new Vue({
+    new Vue({
         el:"#app",
         data:{
-            productList:[
-                {
-                    name:'衣服',
-                    price:123,
-                    isSelected:false,
-                },{
-                    name:'裤子',
-                    price:456,
-                    isSelected:false,
-
-                },{
-                    name:'鞋',
-                    price:444,
-                    isSelected:false,
-                },{
-                    name:'帽子',
-                    price:66,
-                    isSelected:false,
-                },{
-                    name:'手套',
-                    price:88,
-                    isSelected:false,
-                }],
+          list:[
+              {
+                 name:"裤子",
+                 price:123,
+                  isselected:false
+              },
+              {
+                  name:"衣服",
+                  price:234,
+                  isselected:false
+              },
+              {
+                  name:"鞋子",
+                  price:345,
+                  isselected:false
+              },
+              {
+                  name:"帽子",
+                  price:66,
+                  isselected:false
+              },
+              {
+                  name:"衬衫",
+                  price:157,
+                  isselected:false
+              },],
             sum:0,
             checkedList:[],
-            productName:'',
-            productPrice:'',
-            keywords:'',
+            productName:"",
+            productPrice:"",
+            keywords:"",
+            search:"",
         },
         methods:{
             select(product){
-                product.isSelected=!product.isSelected;
-                if(product.isSelected){
-                    this.sum += product.price;
-                }else {
-                    this.sum -= product.price;
+                product.isselected=!product.isselected;
+                if(product.isselected){
+                    this.sum+=product.price;
+                }else{
+                    this.sum-=product.price;
                 }
             },
             delproduct(index){
-                this.productList.splice(index,1)
+                this.list.splice(index,1)
             },
             delchecked(){
-                this.productList=this.productList.filter((item,index)=>{
+                this.list=this.list.filter((item,index)=>{
                     if(!this.checkedList.includes(index)){
                         return item;
                     }
@@ -114,35 +112,23 @@
                 this.checkedList=[]
             },
             addProduct(){
-                this.productList.push({
+                this.list.push({
                     name:this.productName,
                     price:this.productPrice,
                     isSelected:false,
                 });
-                this.productName=this.productPrice=""
             },
-            search(){
-                this.productList=this.productList.filter((item)=>{
-                    if(item.name.includes(this.keywords)||item.name.tostring().includes(this.keywords)){
-                        return item;
+            searchList(){
+                this.search
+                let newArr = this.list.filter((val,index)=>{
+                    if(val.name.includes(this.search)){
+                        return val;
                     }
-                });
-                this.checkedList=[]
+                })
+                this.list = newArr;
             }
         },
-//        computed:{
-//            csum(){
-//                let temp=0;
-//                this.productList.filter((item,index)=>{
-//                    if(this.isSelected){
-//                        temp+=item.price;
-//                    }
-//                });
-//                return temp;
-//            }
-//        }
     })
-
 </script>
 <script src="jquery-3.3.1.js"></script>
 <script src="bootstrap.js"></script>
