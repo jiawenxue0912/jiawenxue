@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="bootstrap.min.css"  >
+</head>
+<style>
+    .red{
+        background: red;
+    }
+</style>
+<body>
+<div id="app" class="text-center">
+    <h1>todolist</h1>
+    <hr>
+<table class="table">
+    <thead>
+    <tr class="info">
+        <td>选择</td>
+        <td>商品名称</td>
+        <td>商品价格</td>
+        <td>删除</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for=" product in productList" @click="select(product)" :class="{red:product.isSelected}" >
+        <td><input type="checkbox" @click.stop v-model="checkedList" ></td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td><button  @click.stop="delproduct(index)" type="button" class="btn btn-warning glyphicon glyphicon-search btn-xs">X</button></td>
+    </tr>
+    <tr>
+        <td><button  @click="delchecked" type="button" class="btn btn-danger btn-xs">删除选中</button></td>
+        <td colspan="3">总价：{{sum}}</td>
+    </tr>
+    </tbody>
+</table>
+</div>
+<script src="vue.js"></script>
+<script>
+
+    let vm =new Vue({
+        el:"#app",
+        data:{
+            productList:[
+                {
+                    name:'衣服',
+                    price:123,
+                    isSelected:false,
+                },{
+                    name:'裤子',
+                    price:456,
+                    isSelected:false,
+
+                },{
+                    name:'鞋',
+                    price:444,
+                    isSelected:false,
+                },{
+                    name:'帽子',
+                    price:66,
+                    isSelected:false,
+                },{
+                    name:'手套',
+                    price:88,
+                    isSelected:false,
+                }],
+                sum:0
+        },methods:{
+            select(product){
+                product.isSelected=!product.isSelected;
+                if(product.isSelected){
+                    this.sum += product.price;
+                }else{
+                    this.sum -= product.price;
+                }
+            },
+        },
+        delproduct(index){
+            this.productList.splice(index,1)
+        },
+
+    })
+
+</script>
+<script src="jquery-3.3.1.js"></script>
+<script src="bootstrap.js"></script>
+</body>
+</html>
