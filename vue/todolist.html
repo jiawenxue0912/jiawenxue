@@ -21,7 +21,7 @@
             <input v-model="keywords" @keyup.enter="search" type="text" class="form-control"  placeholder="请输入关键字">
         </div>
 
-        <button type="button" class="btn btn-default btn-primary" @click="search">搜索</button>
+        <button type="button" class="btn btn-default btn-primary" @click="searchList">搜索</button>
     </form>
     <form class="form-inline">
         <div class="form-group">
@@ -90,6 +90,7 @@
                 productName:'',
                 productPrice:'',
                 keywords:'',
+
         },
         methods:{
             select(product){
@@ -126,14 +127,14 @@
                 });
                 this.productName=this.productPrice=""
             },
-            search(){
-
-                this.productList=this.productList.filter((item)=>{
-                    if(item.name.includes(this.keywords)||item.name.tostring().includes(this.keywords)){
-                        return item;
+            searchList(){
+                this.search
+                let newArr = this.listArr.filter((val,index)=>{
+                    if(val.name.includes(this.search)){
+                        return val;
                     }
-                });
-                this.checkedList=[]
+                })
+                this.listArr = newArr;
             }
 
             },
