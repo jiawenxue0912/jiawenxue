@@ -10,7 +10,9 @@
 <body>
 <div id="app">
 
-    <weichuang></weichuang>
+    <weichuang @click.native="add"></weichuang>
+    <!--自定义组件加.native才能调用方法-->
+    <div>{{num}}</div>
 </div>
 <script src="vue.js"></script>
 <script>
@@ -19,7 +21,6 @@
         props:['msg']
     });
 
-    
     Vue.component('weichuang',{
         template:`
          <div>
@@ -28,7 +29,15 @@
          </div>`
     });
     new Vue({
-        el:"#app"
+        el:"#app",
+        data:{
+            num:0
+        },
+        methods:{
+            add(){
+                this.num++
+            }
+        }
     })
 </script>
 </body>
