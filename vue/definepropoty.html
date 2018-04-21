@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="text" id="int">
+<h1 id="h1"></h1>
+<script>
+    let Oint=document.querySelectorAll("#int");
+    let h1=document.querySelector("h1");
+    let obj={
+        name:"123"
+    };
+    let key ="";
+    Oint.onkeyup=function () {
+        obj.name=this.value;
+        h1.innerHTML=obj.name
+    };
+    object.defineProperty(obj,'name',{
+        get(){
+            console.log("key")
+        },
+        set(val){
+            key=val;
+            console.log(val);
+        }
+    })
+</script>
+</body>
+</html>
