@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <!--<h1>{{str.split('').reverse().join('')}}</h1>-->
+    <h1>{{reversedMessage}}</h1>
+    <input type="text" v-model="str">
+    <input type="text" v-model="firstname">
+    <input type="text" v-model="lastname">
+    <h1>watch:{{firstname}}+{{lastname}}={{fullname}}</h1>
+    <h1>computed:{{fullnames}}</h1>
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#app",
+        data:{
+            str:"hello",
+            firstname:'foo',
+            lastname:'bar',
+            fullname:'foo bar'
+        },
+        computed:{
+            reversedMessage(){
+                return this.str.split('').reverse().join('')
+            },
+            fullnames(){
+                return this.firstname+this.lastname
+            }
+        },
+        watch:{
+            firstname:function (val) {
+               this.fullname=val+""+this.lastname;
+            },
+            lastname:function (val) {
+                this.fullname=this.firstname+""+val;
+            }
+        }
+    })
+//    let str1='www.baidu.com';
+//        console.log(str.split('.').reverse().join(''));字符串反转以逗号间隔
+//    let str2='abcd';
+//        console.log(str.split('').reverse().join(''))
+</script>
+</body>
+</html>
