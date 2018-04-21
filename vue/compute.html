@@ -31,8 +31,15 @@
             reversedMessage(){
                 return this.str.split('').reverse().join('')
             },
-            fullnames(){
-                return this.firstname+this.lastname
+            fullnames:{
+//                return this.firstname+this.lastname
+             get(){
+                 console.log("get");
+                 return this.firstname+this.lastname
+             },
+             set(val){
+                 console.log(val)
+             }
             }
         },
         watch:{
@@ -44,6 +51,7 @@
             }
         }
     })
+
 //    let str1='www.baidu.com';
 //        console.log(str.split('.').reverse().join(''));字符串反转以逗号间隔
 //    let str2='abcd';
