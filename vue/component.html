@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div id="app">
+    <testa :msg="aaa">
+        <span slot="name">{{bbb}}</span>
+    </testa>
+</div>
+<template id="tem1">
+    <div>
+        <div>{{msg}}</div>
+        <slot name="name"></slot>
+        <div>{{ccc}}</div>
+    </div>
+</template>
+<script src="vue.js"></script>
+<script>
+    Vue.component('testa',{
+        template:"#tem1",
+        props:['msg'],
+        data(){
+            return {
+                ccc:"123qwe"
+            }
+        }
+    })
+    new Vue({
+        el:"#app",
+        data:{
+            aaa:"abcde",
+            bbb:"7890"
+        },
+    })
+</script>
+</body>
+</html>
