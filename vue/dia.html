@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .dia-bg{
+        position: absolute;
+        top:0;
+        bottom: 0;
+        left:0;
+        right: 0;
+        background: rgba(223,213,213,0.7);
+    }
+    .dia-container{
+        width: 500px;
+        height: 400px;
+        border:1px solid;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    .title{
+        height: 30px;
+        background: #000;
+        color: white;
+        line-height: 30px;
+        padding: 0 10px;
+        position: relative;
+    }
+    .one{
+        float: left;
+    }
+    .two{
+        float: right;
+        cursor:pointer;
+        position: absolute;
+        left:470px;
+        top:0;
+    }
+    [v-cloak]{
+        display: none;
+    }
+</style>
+<body>
+<div id="app">
+    <button @click="dia1">弹框1</button>
+    <button @click="dia2">弹框2</button>
+    <dialoga  v-cloak  v-show="diaShow" @close="diaShow=false">
+        <span slot="title">弹框1</span>
+        <div slot="content">
+            <p>
+            <input type="text" placeholder="请输入用户名">
+            </p>
+            <p>
+            <input type="password" placeholder="请输入密码">
+            </p>
+        </div>
+    </dialoga>
+    <dialoga  v-cloak v-show="diaShow2" @close="diaShow2=false">
+        <span slot="title" >弹框二</span>
+        <div slot="content1">
+            <p>
+            <input type="text" placeholder="请输入注册信息">
+            </p>
+            <p>
+             <input type="password" placeholder="请设置密码">
+            </p>
+        </div>
+    </dialoga>
+</div>
+<template id="dialog">
+    <div class="dia-bg">
+        <div class="dia-container">
+            <div class="title">
+                <div class="one">
+                    <slot name="title" ></slot>
+                 <div>
+                <span  class="two" @click="$emit('close')">[X]</span>
+            </div>
+            <slot name="content"></slot>
+            <slot name="content1"></slot>
+        </div>
+    </div>
+</template>
+<script src="vue.js"></script>
+<script>
+    Vue.component('dialoga',{
+        template:"#dialog",
+    });
+    new Vue({
+        el:"#app",
+        data:{
+            diaShow:false,
+            diaShow2:false,
+        },
+        methods:{
+            dia1(){
+             this.diaShow =true
+            },
+            dia2(){
+            this.diaShow2 =true
+            }
+
+        }
+    })
+</script>
+</body>
+</html>
