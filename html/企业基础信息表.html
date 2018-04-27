@@ -181,7 +181,7 @@
 
 
 </div>
-<script language="javascript">
+<script >
     //实现单选框复选
     function checkedThis(obj,cname){
         var boxArray = document.getElementsByName(cname);
@@ -195,12 +195,12 @@
     }
 
 
-    实现增加的功能
+    //实现增加的功能
     function addRow() {
         //原来的行数    比如：此处获得表格的行数是5，
         // 所以下面在insertRow时，使用的是表格的当前行数
         var currentRows = document.getElementById("list_table").rows.length;
-        var insertTr = document.getElementById("list_table").insertRow(currentRows);
+        var insertTr = document.getElementById("list_table").insertRow(currentRows);//插入新的行
         var insertTd = insertTr.insertCell();
         insertTd.style.textAlign="center";
         insertTd.innerHTML = currentRows;
