@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+
+    setInterval(function () {
+        console.log(this)
+    },1000);//window
+
+    function aa(){
+        console.log(this)
+    }
+    aa();//window
+
+    obj={
+        name:'zs',
+        age:20,
+        eat:function () {
+            console.log(this.name)
+        }
+    }//指向当前引用对象
+
+//构造函数中this指向实例化对象
+    function Preson(name,age){
+        this.name=name;
+        this.age=age
+    }
+    var person1=new Person('zs',10);
+
+    oDiv.onclick=function () {
+        console.log(this)
+    }//oDiv
+
+    //父级作用域，找this箭头函数中自己没有this
+    obj={
+        name:'lisi',
+        age:10,
+        eat:()=>{
+            console.log(this)
+        }
+    }
+    obj5.eat();
+
+//改变this指向
+    function fn(x,y) {
+        console.log(this,x)
+    }
+    fn(5,4);
+    obj={
+        name:'zs'
+    }
+    fn.call(obj,6,7);
+    fn.apply(obj,[6,7]);//数组
+    fn.bind(obj,6,7)();//手动调用
+</script>
+</body>
+</html>
