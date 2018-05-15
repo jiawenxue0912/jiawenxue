@@ -123,7 +123,7 @@
     }
     for(var k=0;k<aLbt.length;k++){
         aLbt[k].onclick = function () {
-           changeImg(globalIndex);
+            changeImg(globalIndex);
             var thisType = this.getAttribute("this-type");
             if(thisType=="next"){
                 changeImg(++globalIndex);
@@ -131,7 +131,7 @@
                 changeImg(--globalIndex)
             }
         }
-        }
+    }
     setInterval(function () {
         if(isInterval){
             changeImg(globalIndex++);
