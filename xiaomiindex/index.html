@@ -1,217 +1,319 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>小米商城</title>
-  <link rel="stylesheet" href="css/base.css">
+    <meta charset="UTF-8">
+    <title>小米商城</title>
+    <link rel="stylesheet" href="css/base.css">
 </head>
+<style>
+     span{
+        margin: 0 3px;
+    }
+     a:hover{
+         color: #ff6700;
+     }
+    .box{
+        width:1226px;
+        height: 460px;
+        margin: 30px auto;
+        background: #ffffff;
+        position: relative;
+    }
+    .radio-btn{
+        position: absolute;
+    }
+    .radio-btn li{
+        opacity: 0.7;
+        filter: alpha(opacity=70);
+        float: left;
+        display: block;
+        width: 6px;
+        height: 6px;
+        margin: 0 5px;
+        border: 2px solid #fff;
+        border-color: rgba(255,255,255,0.3);
+        border-radius: 10px;
+        text-align: left;
+        text-indent: -9999px;
+        overflow: hidden;
+    }
+    .img-bar{
+        height:460px;
+        background-position: center;
+        overflow: hidden;
+    }
+    .right-btn{
+        right: 10px;
+        bottom: 20px;
+    }
+    .radio-btn .active{
+        background-color:  #757575;
+    }
+     .si-top .left-bt {
+         position: absolute;
+         top:50%;
+         left:234px;
+         height: 70px;
+         margin-top:-35px;
+         width: 992px;
+         color:#b3b3b3;
+     }
+     .slider-bar .si-top  li {
+         display: block;
+        font-size: 30px;
+         float: left;
+
+     }
+    .si-top li:last-child{
+          float: right;
+
+      }
+     .si-top .sit-left:hover{
+         background-position: 0 0;
+     }
+      .si-top .sit-right:hover{
+         background-position: -42px 0;
+     }
+     .bottom-img:hover{
+         box-shadow: 2px 2px 1px 3px rgba(0,0,0,.2);
+            }
+    .top1:hover{
+        box-shadow: 2px 2px 1px 3px rgba(0,0,0,.2);
+    }
+</style>
 <body>
 <div class="topbar">
-  <div class="content clearfix">
-    <div class="topbar-left">
-      <a href="">小米商城</a>
-      <span>|</span>
-      <a href="">MIUI</a>
-      <span>|</span>
-      <a href="">LoT</a>
-      <span>|</span>
-      <a href="">云服务</a>
-      <span>|</span>
-      <a href="">水滴</a>
-      <span>|</span>
-      <a href="">金融</a>
-      <span>|</span>
-      <a href="">有品</a>
-      <span>|</span>
-      <a href="">Select Region</a>
+    <div class="content clearfix">
+        <div class="topbar-left">
+            <a href="">小米商城</a>
+            <span>|</span>
+            <a href="">MIUI</a>
+            <span>|</span>
+            <a href="">LoT</a>
+            <span>|</span>
+            <a href="">云服务</a>
+            <span>|</span>
+            <a href="">水滴</a>
+            <span>|</span>
+            <a href="">金融</a>
+            <span>|</span>
+            <a href="">有品</a>
+            <span>|</span>
+            <a href="">Select Region</a>
+        </div>
+        <div class="topbar-right">
+            <a href="">登录</a>
+            <span>|</span>
+            <a href="">注册</a>
+            <a class="mini-car" href="">
+                <i class="iconfont">&#xe698;</i>
+                <span>购物车(0)</span>
+            </a>
+        </div>
     </div>
-    <div class="topbar-right">
-      <a href="">登录</a>
-      <span>|</span>
-      <a href="">注册</a>
-      <a class="mini-car" href="">
-        <i class="iconfont">&#xe698;</i>
-        <span>购物车(0)</span>
-      </a>
-    </div>
-  </div>
 </div>
 
 <div class="header">
-  <div class="content clearfix">
-    <div class="header-left">
-      <a href=""></a>
+    <div class="content clearfix">
+        <div class="header-left">
+            <a href=""></a>
+        </div>
+        <div class="header-center">
+
+                 <span><a href="">小米手机</a></span>
+                 <span><a href="">红米</a></span>
+                 <span><a href="">笔记本</a></span>
+                 <span><a href="">电视</a></span>
+                 <span><a href="">盒子</a></span>
+                 <span><a href="">新品</a></span>
+                 <span><a href="">路由器</a></span>
+                 <span><a href="">智能硬件</a></span>
+                 <span><a href="">服务</a></span>
+                 <span><a href="">社区</a></span>
+
+        </div>
+        <div class="header-right">
+            <input class="search-text" type="text">
+            <a href="" class="search-btn">
+                <i class="iconfont">&#xe6ac;</i>
+            </a>
+            <div class="input-text">
+                <a href="">红米5新品</a>
+                <a href="">小米note3</a>
+            </div>
+        </div>
     </div>
-    <div class="header-center">
-      <ul>
-        <li><a href="">小米手机</a></li>
-        <li><a href="">红米</a></li>
-        <li><a href="">笔记本</a></li>
-        <li><a href="">电视</a></li>
-        <li><a href="">盒子</a></li>
-        <li><a href="">新品</a></li>
-        <li><a href="">路由器</a></li>
-        <li><a href="">智能硬件</a></li>
-        <li><a href="">服务</a></li>
-        <li><a href="">社区</a></li>
-      </ul>
-    </div>
-    <div class="header-right">
-      <input class="search-text" type="text">
-      <a href="" class="search-btn">
-        <i class="iconfont">&#xe6ac;</i>
-      </a>
-      <div class="input-text">
-        <a href="">红米5新品</a>
-        <a href="">小米note3</a>
-      </div>
-    </div>
-  </div>
 </div>
 <div class="slider-bar">
-  <div class="content slider-site">
-    <div class="slider-left">
-      <ul>
-        <li><a href="">手机&nbsp;电话卡<i class="iconfont">&#xe6a7;</i></a></li>
-        <li><a href="">笔记本<i class="iconfont">&#xe6a7;</i></a></li>
-        <li><a href="">电视&nbsp;盒子<i class="iconfont">&#xe6a7;</i></a></li>
-        <li><a href="">智能 家居<i class="iconfont">&#xe6a7;</i></a></li>
-        <li><a href="">健康 家居<i class="iconfont">&#xe6a7;</i></a></li>
-        <li><a href="">出行 儿童<i class="iconfont">&#xe6a7;</i></a></li>
-        <li><a href="">路由器 手机配<i class="iconfont">&#xe6a7;</i></a></li>
-        <li><a href="">移动电源 插线板<i class="iconfont">&#xe6a7;</i></a></li>
-        <li><a href="">耳机 音响<i class="iconfont">&#xe6a7;</i></a></li>
-        <li><a href="">生活 米兔<i class="iconfont">&#xe6a7;</i></a></li>
-      </ul>
-    </div>
-    <div class="slider-contetn">
-      <div class="">
-        <a href="">
-          <img src="images/slider1.jpg" alt="">
+    <div class="content slider-site">
 
-        </a>
-      </div>
+        <div class="box">
+            <div class="img-bar">
+                <ul>
+                    <li><img src="images/slider1.jpg" alt=""></li>
+                    <li><img src="images/xmad_15246478201362_kKxQF.jpg" alt=""></li>
+                    <li><img src="images/xmad_1526001350212_bazEi.jpg" alt=""></li>
+                    <li><img src="images/xmad_15242074204819_LTKPD.jpg" alt=""></li>
+                    <li><img src="images/xmad_1526001350212_bazEi.jpg" alt=""></li>
+                </ul>
+            </div>
+            <div class="si-top">
+                <ul class=" left-bt">
+                    <li this-type="prev"><</li>
+                    <li this-type="next">></li>
+                </ul>
+            </div>
+
+            <div>
+                <ul class="radio-btn right-btn">
+                    <li class="active"></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                    <li></li>
+                </ul>
+            </div>
+        </div>
+        <div class="slider-left">
+            <ul>
+                <li><a href="">手机&nbsp;电话卡<i class="iconfont">&#xe6a7;</i></a></li>
+                <li><a href="">笔记本<i class="iconfont">&#xe6a7;</i></a></li>
+                <li><a href="">电视&nbsp;盒子<i class="iconfont">&#xe6a7;</i></a></li>
+                <li><a href="">智能 家居<i class="iconfont">&#xe6a7;</i></a></li>
+                <li><a href="">健康 家居<i class="iconfont">&#xe6a7;</i></a></li>
+                <li><a href="">出行 儿童<i class="iconfont">&#xe6a7;</i></a></li>
+                <li><a href="">路由器 手机配<i class="iconfont">&#xe6a7;</i></a></li>
+                <li><a href="">移动电源 插线板<i class="iconfont">&#xe6a7;</i></a></li>
+                <li><a href="">耳机 音响<i class="iconfont">&#xe6a7;</i></a></li>
+                <li><a href="">生活 米兔<i class="iconfont">&#xe6a7;</i></a></li>
+            </ul>
+        </div>
     </div>
-    <div class="slider-icon">
-      <div class="si-top">
-        <a href="" class="sit-left"></a>
-        <a href="" class="sit-right"></a>
-      </div>
-      <div class="si-bottom">
-        <ul>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-          <li><a href=""></a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
 </div>
 <div class="slider-bottom clearfix">
-  <div class="content">
-    <div class="bottom-1">
-      <ul class="clearfix">
-        <li class="top"><a href=""><i class="iconfont">&#xe698;</i>选购手机</a></li>
-        <li class="top"><a href=""><i class="iconfont">&#xe698;</i>企业团购</a></li>
-        <li class="top"><a href=""><i class="iconfont">&#xe698;</i>F码通道</a></li>
-        <li><a href=""><i class="iconfont">&#xe698;</i>以旧换新</a></li>
-        <li><a href=""><i class="iconfont">&#xe698;</i>话费充值</a></li>
-        <li><a href=""><i class="iconfont">&#xe698;</i>米粉卡</a></li>
-      </ul>
+    <div class="content">
+        <div class="bottom-1">
+            <ul class="clearfix">
+                <li class="top"><a href=""><i class="iconfont">&#xe698;</i>选购手机</a></li>
+                <li class="top"><a href=""><i class="iconfont">&#xe698;</i>企业团购</a></li>
+                <li class="top"><a href=""><i class="iconfont">&#xe698;</i>F码通道</a></li>
+                <li><a href=""><i class="iconfont">&#xe698;</i>以旧换新</a></li>
+                <li><a href=""><i class="iconfont">&#xe698;</i>话费充值</a></li>
+                <li><a href=""><i class="iconfont">&#xe698;</i>米粉卡</a></li>
+            </ul>
+        </div>
+        <div class="bottom-img"><img src="images/xmad_15226665066103_Gwasd.jpg" alt=""></div>
+        <div class="bottom-img"><img src="images/1.jpg" alt=""></div>
+        <div class="bottom-img"><img src="images/xmad_15226824474726_YbDsi.jpg" alt=""></div>
     </div>
-    <div class="bottom-img"><img src="images/xmad_15226665066103_Gwasd.jpg" alt=""></div>
-    <div class="bottom-img"><img src="images/1.jpg" alt=""></div>
-    <div class="bottom-img"><img src="images/xmad_15226824474726_YbDsi.jpg" alt=""></div>
-  </div>
 </div>
 <div class="plain-box">
-  <div class="content">
-    <div class="title">
-      <h2>小米明星单品</h2>
-      <div class="more">
-        <a href="" class="iconfont">&#xe697;</a>
-        <a href="" class="iconfont">&#xe6a7;</a>
-      </div>
+    <div class="content">
+        <div class="title">
+            <h2>小米明星单品</h2>
+            <div class="more">
+                <a href="" class="iconfont">&#xe697;</a>
+                <a href="" class="iconfont">&#xe6a7;</a>
+            </div>
+        </div>
+        <div class="pb-slider clearfix">
+            <ul>
+                <li class="top1">
+                    <a href=""><img src="images/pms_1508125822.19716710!220x220.jpg" alt=""></a>
+                    <h3>小米MIX2</h3>
+                    <p>全面屏 5.99寸</p>
+                    <p class="price">3299元</p>
+                </li>
+                <li class="top1">
+                    <a href=""><img src="images/pms_1508850965.67096774!220x220.jpg" alt=""></a>
+                    <h3>小米MIX2</h3>
+                    <p>全面屏 5.99寸</p>
+                    <p class="price">3299元</p>
+                </li>
+                <li class="top1">
+                    <a href=""><img src="images/pms_1509723338.05097112!220x220.jpg" alt=""></a>
+                    <h3>小米MIX2</h3>
+                    <p>全面屏 5.99寸</p>
+                    <p class="price">3299元</p>
+                </li>
+                <li class="top1">
+                    <a href=""><img src="images/pms_1510019402.48089978!220x220.jpg" alt=""></a>
+                    <h3>小米MIX2</h3>
+                    <p>全面屏 5.99寸</p>
+                    <p class="price">3299元</p>
+                </li>
+                <li class="top1">
+                    <a href=""><img src="images/pms_1511228654.33099308!220x220.jpg" alt=""></a>
+                    <h3>小米MIX2</h3>
+                    <p>全面屏 5.99寸</p>
+                    <p class="price">3299元</p>
+                </li>
+                <li class="top1">
+                    <a href=""><img src="images/slider1.png" alt=""></a>
+                    <h3>小米MIX2</h3>
+                    <p>全面屏 5.99寸</p>
+                    <p class="price">3299元</p>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="pb-slider clearfix">
-      <ul>
-        <li>
-          <a href=""><img src="images/pms_1508125822.19716710!220x220.jpg" alt=""></a>
-          <h3>小米MIX2</h3>
-          <p>全面屏 5.99寸</p>
-          <p class="price">3299元</p>
-        </li>
-        <li>
-          <a href=""><img src="images/pms_1508850965.67096774!220x220.jpg" alt=""></a>
-          <h3>小米MIX2</h3>
-          <p>全面屏 5.99寸</p>
-          <p class="price">3299元</p>
-        </li>
-        <li>
-          <a href=""><img src="images/pms_1509723338.05097112!220x220.jpg" alt=""></a>
-          <h3>小米MIX2</h3>
-          <p>全面屏 5.99寸</p>
-          <p class="price">3299元</p>
-        </li>
-        <li>
-          <a href=""><img src="images/pms_1510019402.48089978!220x220.jpg" alt=""></a>
-          <h3>小米MIX2</h3>
-          <p>全面屏 5.99寸</p>
-          <p class="price">3299元</p>
-        </li>
-        <li>
-          <a href=""><img src="images/pms_1511228654.33099308!220x220.jpg" alt=""></a>
-          <h3>小米MIX2</h3>
-          <p>全面屏 5.99寸</p>
-          <p class="price">3299元</p>
-        </li>
-        <li>
-          <a href=""><img src="images/slider1.png" alt=""></a>
-          <h3>小米MIX2</h3>
-          <p>全面屏 5.99寸</p>
-          <p class="price">3299元</p>
-        </li>
-      </ul>
-    </div>
-  </div>
 
 </div>
-<div class="home-brick-box">
-  <div class="content">
-    <div>
-      <h3>家居</h3>
-      <div class="hbb-right">
-        <ul>
-          <li class="li-active">热门</li>
-          <li>电视影音</li>
-          <li>电脑</li>
-          <li>家居</li>
-        </ul>
-      </div>
-    </div>
-    <div class="box-bd clearfix">
-      <div class="span4">
 
-      </div>
-      <div class="span16">
-        <ul class="clearfix">
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li></li>
-          <li>
-            <div class="brick-item"></div>
-            <div class="brick-item"></div>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</div>
+<script>
+    var oBox = document.getElementsByClassName("box");
+    var aUl = document.getElementsByTagName("ul");
+    var aImg = aUl[0].getElementsByTagName("li");
+    var aLbt = aUl[1].getElementsByTagName("li");
+    var aRbt = aUl[2].getElementsByTagName("li");
+    var globalIndex=0;
+    var isInterval=true;
+
+    function changeImg (index) {
+        if(index == 5){
+            index = 0;
+            globalIndex =0;
+        }
+        if(index == -1){
+            index = 4;
+            globalIndex=4;
+        }
+        for(var j=0;j<aRbt.length;j++){
+            aRbt[j].className=" ";
+            aImg[j].style.display="none";
+        }
+        aRbt[index].className="active";
+        aImg[index].style.display="block";
+    }
+    for(var i=0;i<aRbt.length;i++) {
+        aRbt[i].index = i;
+        aRbt[i].onmouseover = function () {
+            globalIndex = this.index;
+            changeImg(globalIndex);
+        }
+    }
+    for(var k=0;k<aLbt.length;k++){
+        aLbt[k].onclick = function () {
+            changeImg(globalIndex);
+            var thisType = this.getAttribute("this-type");
+            if(thisType=="next"){
+                changeImg(++globalIndex);
+            }else{
+                changeImg(--globalIndex)
+            }
+        }
+    }
+    setInterval(function () {
+        if(isInterval){
+            changeImg(globalIndex++);
+        }
+    },1000);
+    oBox[globalIndex].onmouseover = function () {
+        isInterval =false;
+    }
+    oBox[globalIndex].onmouseout = function () {
+            isInterval =true;
+        }
+</script>
 </body>
 </html>
