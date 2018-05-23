@@ -9,51 +9,54 @@
 </head>
 
 <style>
-    /*.div1{*/
-        /*width: 200px;*/
-        /*height: 400px;*/
-        /*background: green;*/
-        /*!*1.float: left;*!*!*/
-        /*!*2.position: absolute;*!*!*/
-
-    /*}*/
-    /*.div2{*/
-        /*height: 400px;*/
-        /*background: gold;*/
-        /*!*margin-left: 200px;*!*/
-        /*!*3.-webkit-box-flex: 1;*!*/
-    /*}*/
-    /*.div3{*/
-        /*display: -webkit-box;*/
-    /*}*/
-    div{
-        height: 400px;
-    }
     .div1{
         width: 200px;
-        background: forestgreen;
-        float: left;
+        height: 400px;
+        background: green;
+        /*float: left;*/
+        /*position: absolute;*/
+
     }
     .div2{
+        height: 400px;
         background: gold;
+        /*margin-left: 200px;*/
+        flex-grow: 1;
     }
     .div3{
-        width: 200px;
-        float: right;
-        background: #007bff;
+        display: flex;
     }
 
+
+
+    /*div{*/
+        /*height: 400px;*/
+    /*}*/
+    /*.div1{*/
+        /*width: 200px;*/
+        /*background: forestgreen;*/
+        /*float: left;*/
+    /*}*/
+
+    /*.div3{*/
+        /*width: 200px;*/
+        /*float: right;*/
+        /*background: #007bff;*/
+    /*}*/
+    /*.div2{*/
+        /*background: gold;*/
+    /*}*/
 </style>
 <body>
-<div class="div1"></div>
-<div class="div3"></div>
-<div class="div2"></div>
+<!--<div class="div1"></div>-->
+<!--<div class="div3"></div>-->
+<!--<div class="div2"></div>-->
 
 <!--两列布局：左边宽度固定，右边自适应-->
-<!--<div class="div3">-->
-    <!--<div class="div1"></div>-->
-    <!--<div class="div2"></div>-->
-<!--</div>-->
+<div class="div3">
+    <div class="div1"></div>
+    <div class="div2"></div>
+</div>
 
 <!--css选择器：-->
 <!--1.id选择器-->
