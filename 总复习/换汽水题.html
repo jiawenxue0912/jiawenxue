@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+
+//    fnction aa() {
+//        var sum=0;
+//        var n;
+//        var p=0;
+//        if(p>=3){
+//            ++sum;
+//            p=p-3;
+//            p++;
+//        }
+//        return sum;
+//    }
+//    console.log(aa(300))
+//
+//基于Javascript
+function f(n){
+    var sum=0;
+    var n1=n;//n1钱数
+    var n3=0;//n3瓶子
+    if(n>0){
+        sum=n3=n1/3;
+    }
+    while(n3>=3){
+        ++sum;
+        n3=n3-3;
+        n3++;
+    }
+    return sum;
+}
+console.log(f(300));
+
+</script>
+</body>
+</html>
