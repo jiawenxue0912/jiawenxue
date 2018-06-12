@@ -40,32 +40,20 @@
 </div>
 
 <script>
-    var aLi=document.getElementsByClassName("tab").getElementsByTagName("li");
-    var aUl=document.getElementsByClassName("content").getElementsByTagName("ul");
-    for(var i=0;i<aLi.length;i++){
-        aLi[i].index=i;
-        aLi[i].onmouseover=function () {
-            for(var j=0;j<aLi.Length;i++){
-                aLi[j].className="";
-                aUl[j].style.display="none";
-            }
-            this.className="active";
-            aUl[this.index].style.display="block"
-        }
-    }
-    var aLi=document.getElementsByClassName("tab").getElementsByTagName("li");
-    var oUl=document.getElementsByClassName("content").getElementsByTagName("ul");
-    for(var i=0;i<aLi.length;i++){
-        aLi[i].index=i;
-        aLi[i].onmousemove=function () {
-            for(var j=0;j<aLi.length;j++){
-            aLi[j].style.display="none ";
-            oUl[j].style.display="none";
-            }
-            this.style.display="block";
-            oUl[this.index].style.display="block";
-        }
-    }
+//    var aLi=document.getElementsByClassName("tab").getElementsByTagName("li");
+//    var oUl=document.getElementsByClassName("content").getElementsByTagName("ul");
+//    for(var i=0;i<aLi.length;i++){
+//        aLi[i].index=i;
+//        aLi[i].onmousemove=function () {
+//            for(var j=0;j<aLi.length;j++){
+//            aLi[j].style.display="none ";
+//            oUl[j].style.display="none";
+//            }
+//            this.style.display="block";
+//            oUl[this.index].style.display="block";
+//        }
+//    }
+
     var aLi=document.getElementById("tab").getElementsByTagName("li");
     var oUl=document.getElementById("content").getElementsByTagName("ul");
     for( var i=0;i<aLi.length;i++){
