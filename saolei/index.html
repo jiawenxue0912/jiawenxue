@@ -1,317 +1,503 @@
-
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
-    <meta charset="UTF-8">
-    <title >扫雷小游戏</title>
-    <style type="text/css">
-        #container {
-            width: 670px;
-            height: 670px;
-            background-color: #eeffee;
-            margin: 10px auto;
-        }
-
-        .block {
-            width: 20px;
-            height: 20px;
-            background-color: white;
-            border: 1px solid;
-            float: left;
-            margin: 0 0 0 0px;
-            text-align: center;
-        }
-
-        .block2 {
-            width: 10px;
-            height: 10px;
-            background-color: red;
-            float: left;
-        }
-
-        .openedBlockNormal {
-            width: 20px;
-            height: 20px;
-            background-color: green;
-            border: 1px solid;
-            float: left;
-            margin: 0 0 0 0px;
-            text-align: center;
-        }
-
-        .openedBlockBomb {
-            width: 20px;
-            height: 20px;
-            background-color: red;
-            border: 1px solid;
-            float: left;
-            margin: 0 0 0 0px;
-            text-align: center;
-        }
-
-        .openedBlockEmpty {
-            width: 20px;
-            height: 20px;
-            background-color: yellow;
-            border: 1px solid;
-            float: left;
-            margin: 0 0 0 0px;
-            text-align: center;
-        }
-    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>JS扫雷游戏</title>
+    <script type="text/javascript" src="Mine.js"></script>
     <script type="text/javascript">
-        var EventUtil = new Object;
-        EventUtil.addEvent = function(oTarget, sEventType, funName) {
-            if (oTarget.addEventListener) {//for DOM;
-                oTarget.addEventListener(sEventType, funName, false);
-            } else if (oTarget.attachEvent) {
-                oTarget.attachEvent("on" + sEventType, funName);
-            } else {
-                oTarget["on" + sEventType] = funName;
-            }
-        };
-        EventUtil.removeEvent = function(oTarget, sEventType, funName) {
-            if (oTarget.removeEventListener) {//for DOM;
-                oTarget.removeEventListener(sEventType, funName, false);
-            } else if (oTarget.detachEvent) {
-                oTarget.detachEvent("on" + sEventType, funName);
-            } else {
-                oTarget["on" + sEventType] = null;
-            }
-        };
+        document.oncontextmenu=function(){
+            event.returnValue=false
+        }
     </script>
-    <script type="text/javascript" src="bomb.js"></script>
+    <link type="text/css" rel="stylesheet" href="Mine.css">
+    <style>
+        .myButton{
+            width: 30px;
+            height: 30px;
+            background: silver;
+        }
+        .myButton0{
+            width: 30px;
+            height: 30px;
+            color:gray;
+            background:gray;
+        }
+        .myButton1{
+            background: gray;
+            color:blue;
+            font-size:10px;
+            width: 30px;
+            height: 30px;
+        }
+        .myButton2{
+            background: gray;
+            font-size:10px;
+            color:green;
+            width: 30px;
+            height: 30px;
+        }
+        .myButton3{
+            background: gray;
+            color:yellow;
+            width: 30px;
+            height: 30px;
+        }
+        .myButton4{
+            background: gray;
+            color: aqua;
+            width: 30px;
+            height: 30px;
+        }
+        .myButton5{
+            background: gray;
+            color: fuchsia;
+            width: 30px;
+            height: 30px;
+        }
+        .myButton6{
+            background: gray;
+            color:lime;
+            width: 30px;
+            height: 30px;
+        }
+        .myButton7{
+            background: gray;
+            color: teal;
+            width: 30px;
+            height: 30px;
+        }
+
+        .myButton8{
+            background: gray;
+            color: navy;
+            width: 30px;
+            height: 30px;
+        }
+
+        .myButton_{
+            background: gray;
+            color: red;
+            width: 30px;
+            height: 30px;
+        }
+
+
+    </style>
 </head>
-<body>
-<h2 style="text-align: center">扫雷小游戏</h2>
-<p id="containers" style="cursor: pointer"></p>
-</body>
-
+<body onload="Interface(8,8);">
+<p >
+    目前剩余雷数:<span id="markNum" style="color: red"></span>个
+</p>请选择难度：
+<select   id="level" onchange="selectLevel(this.value);">
+    <option value="1">初级玩家
+    <option value="2">普通玩家
+    <option value="3">高级玩家
+</select>
+<table  id="mainTab" cellpadding="0" cellspacing="0">
+    <tbody id="mainInt"></tbody>
+</table>
 <script>
-    // this class stands for eight direction of every block.
-    function Direction() {
-        this.up = null;
-        this.right = null;
-        this.down = null;
-        this.left = null;
-        this.leftUp = null;
-        this.rightUp = null;
-        this.leftDown = null;
-        this.rightDown = null;
+    var Mine;//用来记录每个小方块应对应的值
+    var markNum=8;//用来记录用户标记的数目
+    /**
+     * 布局游戏界面 size是布局大小，number是布雷数
+     */
+    function Interface(size,number){
+        markNum=number;
+        var mainFrame=$("mainInt");
+        $("markNum").innerText=markNum;
+        mainFrame.innerText="";
+        var mine=new Array(size);
+        for(var i=0;i<size;i++){
+            mine[i]=new Array(size);
+        }
+        mine=randomNumber(mine,number);
+        Mine=mine;
+        for(var i=0;i<size;i++){
+            mainFrame.appendChild(createRow(i,size,mine));
+        }
     }
-    // every block object stands for one block in the page.
-    function Block(className) {
-        // blocks around.
-        this.neighbors = new Direction();// [up,rightUp,right,rightDown,down,leftDown,left,leftUp]
-        // html element. p used here.
-        this.html = null;
-        // position of this block.
-        this.index = -1;
-        // is this block a bomb?
-        this.isBomb = false;
-        // how many bombs around of this blocks.
-        this.bombNumAround = -1;
-        // html css style
-        this.className = className;
-        // is it already opened?
-        this.isOpen = false;
-        // do some preparation for this block;
-        this.init();
+
+    /**
+     * randomNumber
+     * 参数mine,num分别表示一个二维数组和布雷的数目
+     */
+    function randomNumber(mine,num) {
+        var mine=mine;
+        var rows=mine.length;
+        var cols=mine.length;
+        var i=0;
+
+//完成布雷工作
+        while(i<num){
+            var row=Math.ceil((rows*Math.random()))-1;
+            var col=Math.ceil((cols*Math.random()))-1;
+            if(mine[row][col]!="雷"){
+                mine[row][col]="雷";
+                i++;
+            }
+        }
+
+//完成雷数提示工作
+        for(var i=0;i<rows;i++){
+            for(var j=0;j<cols;j++){
+                var mineNum=0;
+//判断左上
+                if((i-1>=0)&&(j-1>=0)){
+                    if(mine[i-1][j-1]=="雷")
+                        mineNum++;
+                }
+//判断正上
+                if(i>=1){
+                    if(mine[i-1][j]=="雷")
+                        mineNum++;
+                }
+//判断右上
+                if((i-1>=0)&&(j<=cols-2)){
+                    if(mine[i-1][j+1]=="雷")
+                        mineNum++;
+                }
+//判断左边
+                if(j>=1){
+                    if(mine[i][j-1]=="雷")
+                        mineNum++;
+                }
+//判断右边
+                if(j<=cols-2){
+                    if(mine[i][j+1]=="雷")
+                        mineNum++;
+                }
+//判断左下
+                if((i<=rows-2)&&(j-1>=0)){
+                    if(mine[i+1][j-1]=="雷")
+                        mineNum++;
+                }
+//判断正下
+                if(i<=rows-2){
+                    if(mine[i+1][j]=="雷")
+                        mineNum++;
+                }
+//判断右下
+                if((i<=rows-2)&&(j<=cols-2)){
+                    if(mine[i+1][j+1]=="雷")
+                        mineNum++;
+                }
+                if(mine[i][j]!="雷"){
+                    mine[i][j]=mineNum;
+                }
+            }
+        }
+        return mine;
     }
-    // calculate how many bombs of around.
-    Block.prototype.calcBombAround = function() {
-        if (!this.isBomb) {
-            var bombNumber = 0;
-            for ( var p in this.neighbors) {
-                if (typeof (this.neighbors[p]) != "function") {
-                    if (null != this.neighbors[p] && this.neighbors[p].isBomb) {
-                        bombNumber++;
+
+    /**
+     * 创建行
+     */
+    function createRow(row,len,mine){
+        var mine=mine;
+        var tr=document.createElement("tr");
+        for(var i=0;i<len;i++){
+            var td=document.createElement("td");
+            var button=document.createElement("input");
+            button.type="button";
+            button.id=row+"."+i;
+            button.className="myButton";
+
+            var context=mine[row][i];
+            button.onclick=function (){
+//alert(this.id)
+                getValue(this);
+                if(this.value=="雷"){
+                    this.className="myButton_";
+                    getValue("over");
+                    alert("你触雷了，游戏结束！");
+                    if(confirm("重新开始？")){
+                        window.location.reload();
                     }
+                    return false;
+                }
+                if(this.value==0){
+                    showSpace2(this);
+                }
+                this.oncontextmenu=function (){
+                    return false;
+                }
+                judge();
+            };
+            button.oncontextmenu=function (){
 
+                if(this.value=="确定"){
+                    this.value="?";
+                    markNum++;
+                    $("markNum").innerHTML=markNum;
+                }else if(this.value=="?"){
+                    this.value="";
+                }else{
+                    this.value="确定";
+                    markNum--;
+                    $("markNum").innerHTML=markNum;
+                    judge();
+                }
+
+            }
+//button.value=mine[row][i];
+            td.appendChild(button);
+            tr.appendChild(td);
+        }
+        return tr;
+    }
+
+
+    //当点击的不是空白区或者是触动雷的时候调用下面的函数
+    function getValue(object){
+        if("over"!=object){
+            var id=object.id;
+            var button=document.getElementById(id);
+            var row=id.split(".")[0];
+            var col=id.split(".")[1];
+            button.value=Mine[row][col];
+            button.className="myButton"+button.value;
+        }else{
+            for(var i=0;i<Mine.length;i++)
+                for(var j=0;j<Mine[i].length;j++){
+                    var button = $(i+"."+j);
+                    if(Mine[i][j]=="雷"){
+                        button.value=Mine[i][j];
+                        button.className="myButton_";
+                    }
+                }
+        }
+    }
+
+    /**
+     * 当点击的区域为空白区域时调用的下面的函数将与该区域相连的空白区域都显示出来
+     */
+
+    function showSpace(object){
+        var id=object.id;
+        var button=document.getElementById(id);
+        var cols=Mine.length;
+        var rows=Mine.length;
+        var mark=0;
+        while(mark<cols){
+            for(var i=0;i<cols;i++)
+                for(var j=0;j<rows;j++){
+                    var button2 = $(i+"."+j);
+                    if(button2.value=="0"){
+//判断左上
+                        if((i-1>=0)&&(j-1>=0)){
+                            var but=$((i-1)+"."+(j-1));
+                            but.value=(Mine[i-1][j-1]=="雷") ? "" : Mine[i-1][j-1];
+                            but.className="myButton"+but.value;
+                        }
+//判断正上
+                        if(i>=1){
+                            var but=$((i-1)+"."+(j));
+                            but.value=(Mine[i-1][j]=="雷") ? "" : Mine[i-1][j];
+                            but.className="myButton"+but.value;
+                        }
+//判断右上
+                        if((i-1>=0)&&(j<=cols-2)){
+                            var but=$((i-1)+"."+(j+1));
+                            but.value=(Mine[i-1][j+1]=="雷") ? "" : Mine[i-1][j+1];
+                            but.className="myButton"+but.value;
+                        }
+//判断左边
+                        if(j>=1){
+                            var but=$((i)+"."+(j-1));
+                            but.value=(Mine[i][j-1]=="雷") ? "" : Mine[i][j-1];
+                            but.className="myButton"+but.value;
+                        }
+//判断右边
+                        if(j<=cols-2){
+                            var but=$((i)+"."+(j+1));
+                            but.value=(Mine[i][j+1]=="雷") ? "" : Mine[i][j+1];
+                            but.className="myButton"+but.value;
+                        }
+//判断左下
+                        if((i<=rows-2)&&(j-1>=0)){
+                            var but=$((i+1)+"."+(j-1));
+                            but.value=(Mine[i+1][j-1]=="雷") ? "" : Mine[i+1][j-1];
+                            but.className="myButton"+but.value;
+                        }
+//判断正下
+                        if(i<=rows-2){
+                            var but=$((i+1)+"."+(j));
+                            but.value=(Mine[i+1][j]=="雷") ? "" : Mine[i+1][j];
+                            but.className="myButton"+but.value;
+                        }
+//判断右下
+                        if((i<=rows-2)&&(j<=cols-2)){
+                            var but=$((i+1)+"."+(j+1));
+                            but.value=(Mine[i+1][j+1]=="雷") ? "" : Mine[i+1][j+1];
+                            but.className="myButton"+but.value;
+                        }
+                    }
+                }
+            mark++;
+        }
+    }
+
+    /**
+     * 3月18日在showSpace()方法的基础上使用递归算法改进的，速度快了很多。
+     */
+    function showSpace2(object){
+        var id=object.id;
+        var row=parseInt(id.split(".")[0]);
+        var col=parseInt(id.split(".")[1]);
+//alert(row+"."+col);
+        var cols=Mine.length;
+        var rows=Mine.length;
+//判断左上
+        if((row-1>=0)&&(col-1>=0)){
+            var but=$((row-1)+"."+(col-1));
+            if(but.value!="0"){
+                but.value=(Mine[row-1][col-1]=="雷") ? "" : Mine[row-1][col-1];
+                but.className="myButton"+but.value;
+                if(but.value=="0"){
+                    showSpace2(but);
                 }
             }
-            this.bombNumAround = bombNumber;
         }
-    };
-    // return html element.
-    Block.prototype.getHtml = function() {
-        return this.html;
-    };
-    Block.prototype.init = function() {
-        var that = this;
-        // create a html element.
-        this.html = document.createElement("p");
-        // adding mouse over handler for this block. change background color for
-        // this block.
-        EventUtil.addEvent(this.html, "mouseover", function(evt) {
-            var element = evt.target ? evt.target : evt.srcElement;
-            element.style.backgroundColor = "#eeAB6F";
-        });
-        // remove the style which were added in mouseover handler.
-        EventUtil.addEvent(this.html, "mouseout", function(evt) {
-            var element = evt.target ? evt.target : evt.srcElement;
-            element.style.backgroundColor = "";
-            element.style.cursor = "";
-        });
-        // user click some block.
-        EventUtil.addEvent(this.html, "mousedown", function(evt) {
-            // right click button.
-            if (evt.button == 2) {
-                // if this block already indicate as a bomb, then change to normal
-                // block.
-                if (that.getStyle() == "openedBlockBomb") {
-                    that.changeStyle("block");
-                } else if (that.getStyle() == "block") {
-                    // if this block is a normal block, indicate as a bomb.
-                    that.changeStyle("openedBlockBomb");
-                }
-            } else {// left click!
-                // open it
-                that.open();
-            }
-
-        });
-
-        // setting defalut style name.
-        this.changeStyle(this.className);
-    };
-    // change css style.
-    Block.prototype.changeStyle = function(styleName) {
-        this.html.setAttribute("class", styleName);
-        this.html.setAttribute("className", styleName);
-    };
-    // getting csss style
-    Block.prototype.getStyle = function() {
-        var style = this.html.getAttribute("class");
-        if (style == null || typeof (style) == "undefined") {
-            style = this.html.getAttribute("className");
-        }
-        return style;
-    };
-    Block.prototype.open = function() {
-        // if there is no bomb around, change style as an empty block.
-        if (this.bombNumAround == 0) {
-            this.changeStyle("openedBlockEmpty");
-        } else if (this.bombNumAround > 0) {
-            // setting bomb number to inner html.
-            this.html.innerHTML = this.bombNumAround;
-            this.changeStyle("openedBlockNormal");
-        } else {
-            // setting style as a bomb.
-            this.changeStyle("openedBlockBomb");
-            alert("扫到雷啦！！");
-        }
-
-        this.isOpen = true;
-        // if 0 ==bomb number,them open other block around.
-        if (this.bombNumAround == 0) {
-            var directions = new Array();
-            directions.push("up");
-            directions.push("right");
-            directions.push("down");
-            directions.push("left");
-            directions.push("leftUp");
-            directions.push("rightUp");
-            directions.push("leftDown");
-            directions.push("rightDown");
-            for ( var i = 0; i < directions.length; i++) {
-                var blockInDirection = this.neighbors[directions[i]];
-                if (null != blockInDirection
-                    && typeof (blockInDirection) != "undefined"
-                    && !blockInDirection.isBomb && !blockInDirection.isOpen) {
-                    blockInDirection.open();
+//判断正上
+        if(row>=1){
+            var but=$((row-1)+"."+(col));
+            if(but.value!="0"){
+                but.value=(Mine[row-1][col]=="雷") ? "" : Mine[row-1][col];
+                but.className="myButton"+but.value;
+                if(but.value=="0"){
+                    showSpace2(but);
                 }
             }
         }
-    };
+//判断右上
+        if((row-1>=0)&&(col<=cols-2)){
+            var but=$((row-1)+"."+(col+1));
+            if(but.value!="0"){
+                but.value=(Mine[row-1][col+1]=="雷") ? "" : Mine[row-1][col+1];
+                but.className="myButton"+but.value;
+                if(but.value=="0"){
+                    showSpace2(but);
+                }
+            }
+        }
+//判断左边
+        if(col>=1){
+            var but=$((row)+"."+(col-1));
+            if(but.value!="0"){
+                but.value=(Mine[row][col-1]=="雷") ? "" : Mine[row][col-1];
+                but.className="myButton"+but.value;
+                if(but.value=="0"){
+                    showSpace2(but);
+                }
+            }
+        }
+//判断右边
+        if(col<=cols-2){
+            var but=$((row)+"."+(col+1));
+            if(but.value!="0"){
+                but.value=(Mine[row][col+1]=="雷") ? "" : Mine[row][col+1];
+                but.className="myButton"+but.value;
+                if(but.value=="0"){
+                    showSpace2(but);
+                }
+            }
+        }
+//判断左下
+        if((row<=rows-2)&&(col-1>=0)){
+            var but=$((row+1)+"."+(col-1));
+            if(but.value!="0"){
+                but.value=(Mine[row+1][col-1]=="雷") ? "" : Mine[row+1][col-1];
+                but.className="myButton"+but.value;
+                if(but.value=="0"){
+                    showSpace2(but);
+                }
+            }
+        }
+//判断正下
+        if(row<=rows-2){
+            var but=$((row+1)+"."+(col));
+            if(but.value!="0"){
+                but.value=(Mine[row+1][col]=="雷") ? "" : Mine[row+1][col];
+                but.className="myButton"+but.value;
+                if(but.value=="0"){
+                    showSpace2(but);
+                }
+            }
+        }
+//判断右下
+        if((row<=rows-2)&&(col<=cols-2)){
+            var but=$((row+1)+"."+(col+1));
+            if(but.value!="0"){
+                but.value=(Mine[row+1][col+1]=="雷") ? "" : Mine[row+1][col+1];
+                but.className="myButton"+but.value;
+                if(but.value=="0"){
+                    showSpace2(but);
+                }
+            }
+        }
+    }
 
-    function Container(parent, width, heigth, rows, columns, bomb) {
-        this.bombNumber = bomb;
-        this.parent = parent;
-        this.width = width;
-        this.heigth = heigth;
-        this.rows = rows;
-        this.columns = columns;
-        this.childObject = new Array();
-        this.html = null;
+    /**
+     * 判断是否说有的格子是否都是正确的找出来了
+     */
+    function judge(){
+        var cols=Mine.length;
+        var rows=Mine.length;
+        var allTrue=true;
+        for(var i=0;i<cols;i++)
+            for(var j=0;j<rows;j++){
+                var button = $(i+"."+j);
+                if(Mine[i][j]=="雷"&&button.value!="确定"){
+                    allTrue=false;
+                }
+                else if(Mine[i][j]!="雷"&&button.value!=Mine[i][j]){
+                    allTrue=false;
+                }
+            }
+        if(allTrue){
+            if(confirm("全部雷已经挖出，你胜利了!重新开始?")){
+                window.location.reload();
+            }
+        }
+    }
+    /**
+     * 选择难度
+     */
+
+    function selectLevel(level){
+        if(level=="1"){
+            Interface(8,6);
+        }else if(level=="2"){
+            Interface(12,15);
+        }else if(level=="3"){
+            Interface(12,25);
+        }
+    }
+
+    function $(id) {
+        return document.getElementById(id);
 
     }
-    Container.prototype.init = function() {
-        this.html = document.createElement("p");
-        this.html.id = "container";
 
-        var bombArray = new Object();
-        // how many bombs in all.
-        var bombNumber = 100;
-        var index = this.rows * this.columns + 1;
-        var loopNumber = 0;
-        // randomly generate the position of bomb.
-        while (true) {
-            if (loopNumber >= bombNumber) {
-                break;
-            }
-            var randomBombPosition = Math.floor(Math.random() * index);
-            if (bombArray[randomBombPosition] != true) {
-                bombArray[randomBombPosition] = true;
-                loopNumber++;
-            }
-
-        }
-        // generate block objects.
-        for ( var i = 0; i < this.rows * this.columns; i++) {
-            var block = new Block("block");
-
-            if (bombArray[i] == true) {
-                block.isBomb = true;
-            }
-
-            this.childObject.push(block);
-            this.html.appendChild(block.html);
-        }
-        // generating the relation of blocks. neighbors around.
-        for ( var j = 0; j < this.rows * this.columns; j++) {
-            block = this.childObject[j];
-            block.neighbors.up = this.childObject[j - this.columns];
-            block.neighbors.right = this.childObject[j + 1];
-            block.neighbors.down = this.childObject[j + this.columns];
-            block.neighbors.left = this.childObject[j - 1];
-            block.neighbors.leftUp = this.childObject[j - this.columns - 1];
-            block.neighbors.rightUp = this.childObject[j - this.columns + 1];
-            block.neighbors.leftDown = this.childObject[j + this.columns - 1];
-            block.neighbors.rightDown = this.childObject[j + this.columns + 1];
-            if (j / this.columns == 0) {
-                block.neighbors.up = null;
-                block.neighbors.leftUp = null;
-                block.neighbors.rightUp = null;
-            } else if (j / this.columns == this.rows - 1) {
-                block.neighbors.down = null;
-                block.neighbors.leftDown = null;
-                block.neighbors.rightDown = null;
-            }
-            if (j % this.columns == 0) {
-                block.neighbors.left = null;
-                block.neighbors.leftUp = null;
-                block.neighbors.leftDown = null;
-            } else if (j % this.columns == this.columns - 1) {
-                block.neighbors.right = null;
-                block.neighbors.rightUp = null;
-                block.neighbors.rightDown = null;
-            }
-            block.calcBombAround();
-        }
-
-    };
 </script>
-<script type="text/javascript">
-    document.oncontextmenu = function() {
-        return false;
-    };
-    var parent = document.getElementById("containers");
-    var container = new Container(parent, "500px", "500px", 30, 30, 0);
-    container.init();
-    parent.appendChild(container.html);
-</script>
-
+</body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
