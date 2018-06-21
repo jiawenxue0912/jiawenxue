@@ -39,16 +39,16 @@
     </div>
 </div>
 <script>
+
     var $li=$("#tab > li");
     var $act=$("#content >ul");
 
     $("li").click(function () {
-       $li.removeClass("active");
+        $li.removeClass("active");
         $act.css("display","none");
         $(this).addClass("active");
         $act.eq($(this).index()).css("display","block");
     })
-
 
 
 
