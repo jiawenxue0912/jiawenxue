@@ -31,36 +31,50 @@
 <script>
     var oUl=document.getElementById("ul-menu");
     var aLi=document.getElementsByTagName("li");
-
-//   var  aUlCn= document.getElementsByClassName("ul-cn");
-//   console.log("oUl")
-//    console.log("aUl")
-//    console.log("oUlCn")
-//事件三要素：事件源，事件处理函数，事件对象
     document.oncontextmenu=function (e) {
-        e=e||window.event;
-      oUl.style.display="block";
-//      console.log(e.clientX);
-      oUl.style.top= e.clientY+"px";
-      oUl.style.left=e.clientX+"px";
-      return false;
+        e= e || window.event;
+        oUl.style.display="block";
+        oUl.style.left=e.clientX+"px";
+        oUl.style.top=e.clientY+"px";
+        return false;
     }
     document.onclick=function () {
         oUl.style.display="none";
     }
-
     for(var i=0;i<aLi.length;i++){
         aLi[i].onclick=function () {
-            var thisLink=this.getAttribute("links");
-            location.href="http://www.baidu.com";
-            var thisText=this.innerText;
-            alert(thisText);
+            alert(this.innerHTML)
         }
     }
 
-//    aLi.onclick=function () {
-//        alert("1");
+//    var oUl=document.getElementById("ul-menu");
+//    var aLi=document.getElementsByTagName("li");
+//
+//事件三要素：事件源，事件处理函数，事件对象
+//    document.oncontextmenu=function (e) {
+//        e=e||window.event;
+//      oUl.style.display="block";
+////      console.log(e.clientX);
+//      oUl.style.top= e.clientY+"px";
+//      oUl.style.left=e.clientX+"px";
+//      return false;
 //    }
+//    document.onclick=function () {
+//        oUl.style.display="none";
+//    }
+//
+//    for(var i=0;i<aLi.length;i++){
+//        aLi[i].onclick=function () {
+//            var thisLink=this.getAttribute("links");
+//            location.href="http://www.baidu.com";
+//            var thisText=this.innerText;
+//            alert(thisText);
+//        }
+//    }
+//
+////    aLi.onclick=function () {
+////        alert("1");
+////    }
 </script>
 </body>
 </html>
