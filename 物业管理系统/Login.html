@@ -78,17 +78,32 @@
             <div class="login-content">
 
                 <div class="login-input">
-                    <input type="text" placeholder="请输入用户名"><br>
-                    <input type="password" placeholder="请输入密码" ><br>
+                    <input   id='inp'  type="text" placeholder="请输入用户名"><br>
+                    <input id='inp1' type="password" placeholder="请输入密码" ><br>
                 </div>
                 <div class="login-btn">
-                   <a href="index.html"><input type="submit" value="登录"></a>
+                   <input  id='btn' type="submit" value="登录">
                 </div>
+
 
             </div>
         </div>
     </div>
 </div>
+<script>
+    var oInp = document.getElementById('inp');
+    var oInp1 = document.getElementById('inp1');
+    var oBtn = document.getElementById('btn');
+    oBtn.onclick=function() {
+        if (oInp.value == "贾文雪"&&oInp1.value=="0912") {
+            window.location.href="index.html";
+        }else{
+            alert("请输入正确用户名");
+        }
 
+    } ;
+
+
+</script>
 </body>
 </html>

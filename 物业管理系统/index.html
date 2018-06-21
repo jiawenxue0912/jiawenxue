@@ -5,22 +5,130 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="bootstrap.css">
+    <script src="jquery-3.3.1.js"></script>
+
     <title>Document</title>
 </head>
 <style>
+
+
+         /*main.css*/
+     .main-container {
+         position: relative;
+     }
+         .img{
+             width: 100%;
+             height: 600px;
+         }
+    .left_list {
+        border: 1px solid #3b3b1f;
+        position: fixed;
+        top: 60px;
+        overflow: auto;
+        z-index: 1;
+        width: 220px !important;
+        height: 94% !important;
+    }
+    .l_top_nav {
+        background: orangered;
+        height: 42px;
+        line-height: 46px;
+        padding-left: 20px;
+        color: #fff;
+        font-size: 16px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+    }
+    /*左侧导航区*/
+    .main-container {
+        position: relative;
+    }
+
+    .left_list {
+        border: 1px solid #3b3b1f;
+        position: fixed;
+        top: 50px;
+        overflow: auto;
+        z-index: 1;
+        width: 210px !important;
+        height: 94% !important;
+    }
+
+
+
+
+
+   ul li a{
+       text-decoration: none;
+       font-size: 25px;
+
+   }
+    ul.nav_list > li > a {
+        display: block;
+        padding: 0 16px 0 10px;
+        height: 40px;
+        line-height: 40px;
+    }
+
+    ul.nav_list > li > a > span {
+        display: inline-block;
+        width: 30px;
+        position: relative;
+        top: 1px;
+    }
+
+    ul.nav_list > li > a > span.glyphicon-chevron-down {
+        position: absolute;
+        left: 166px;
+        top: 14px;
+        width: 30px;
+    }
+
+    .nav_list > li > ul.menu {
+        /*padding: 5px 0;*/
+        border-top: 1px solid rgba(0, 0, 0, 0.15);
+
+        font-size: 13px;
+    }
+
+
+    .nav_list > li > ul.menu > li {
+        position: relative;
+        top: 0;
+    }
+
+
+
+    .nav_list > li > ul.menu > li > a {
+        padding: 12px 0 9px 37px;
+        display: block;
+        position: relative;
+        top: 0px;
+        height: 40px;
+
+    }
+    .nav_list > li > ul.menu > li > a > i {
+        font-size: 10px;
+        position: absolute;
+        left: 15px;
+        top: 12px;
+    }
+
+    .icon-double-angle-right:before {
+        content: ">";
+    }
+    .page-content {
+        padding: 48px 6px 36px 212px;
+    }
+    右侧显示内容区
+    .page_top{ position: relative; top:51px; left:220px; padding: 8px 20px;}
+
     a{
         text-decoration: none;
         color: grey;
 
     }
-    .topbar-left{
-        text-align: center;
-        background-color: #dee2e6;
-        width: 100%;
-        height: 50px;
-        line-height: 50px;
-        font-size: 25px;
-    }
+
     .slider-bar .slider-site{
         position: relative;
         height: 445px;
@@ -33,7 +141,9 @@
         top:0;
         left: 0;
     }
-
+.active{
+    /*background-color: orangered;*/
+}
     .slider-bar .slider-left{
         position: absolute;
         padding:20px 0;
@@ -48,61 +158,217 @@
         padding-left: 0;
     }
     .slider-bar .slider-left a{
-        display: block;
-        height: 42px;
-        line-height: 42px;
-        padding-left: 30px;
+
+        height: 25px;
+        line-height: 25px;
+
         font-size: 14px;
         color: #ffffff;
         padding-right: 20px;
 
     }
-    .slider-bar .slider-left a:hover{
-        background-color:#ff6700 ;
-    }
-    .slider-bar .slider-left i{
-        float: right;
-        font-size: 18px;
-    }
+
+
     .picture img{
         width: 1333px;
         height: 580px;
     }
 </style>
 <body>
-<div class="topbar" >
-    <div class="content clearfix">
-        <div class="topbar-left" >
-            欢迎您来到哈尔滨市道外区物业管理系统
+<!--<div class="topbar" >-->
+    <!--<div class="content clearfix">-->
+        <!--<div class="topbar-left" >-->
+            <!--欢迎您来到哈尔滨市道外区物业管理系统-->
+
+        <!--</div>-->
+
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="slider-bar">-->
+    <!--<div class="content slider-site">-->
+        <!--<div class="slider-left">-->
+            <!--<ul>-->
+                <!--<li><a href="index.html" target="test">首页</a></li>-->
+                <!--<li><a href="1.html">小区展示</a></li>-->
+                <!--<li><a href="2.html">小区信息管理</a></li>-->
+                <!--<li><a href="3.html">管理员信息管理</a></li>-->
+                <!--<li><a href="4.html">业主信息管理</a></li>-->
+                <!--<li><a href="5.html">房产信息管理</a></li>-->
+                <!--<li><a href="6.html">车位管理</a></li>-->
+                <!--<li><a href="7.html">收费管理</a></li>-->
+
+            <!--</ul>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;<div class="slider-contetn">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="picture">&ndash;&gt;-->
+                <!--&lt;!&ndash;<img src="img/11.jpeg" alt="">&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+    <!--</div>-->
+<!--</div>-->
+<!--<div    class="slider-contetn" >-->
+    <!--<iframe src="index.html" name="test" frameborder="no" class="Displayarea" ></iframe>-->
+
+
+<!--</div>-->
+
+<!--main.html-->
+
+<div class="main-container" id="main-container">
+    <div class="left_list" id="left_list">
+        <div class="l_top_nav">
+            <span>首页</span>
+
 
         </div>
+                <ul class="menu list-unstyled dplay">
+                    <li >
+                        <a href="javascript:a()">小区展示</a>
+                    </li>
+                    <li>
+                        <a href="javascript:b()">小区信息管理</a>
+                    </li>
+                    <li>
+                        <a href="javascript:e()">房产信息管理</a>
+                    </li>
+                    <li>
+                        <a href="javascript:f()">车位管理</a>
+                    </li>
+                    <li>
+                        <a href="javascript:g()">收费管理</a>
+                    </li>
+                    <li>
+                        <a href="javascript:c()">管理员信息管理</a>
+                    </li>
+                    <li>
+                        <a href="javascript:d()">业主信息管理</a>
+                    </li>
+
+        </ul>
+    </div>
+    <!--右侧显示内容区-->
+    <div class="page-content"></div>
 
     </div>
-</div>
-<div class="slider-bar">
-    <div class="content slider-site">
-        <div class="slider-left">
-            <ul>
-                <li><a href="index.html">首页</a></li>
-                <li><a href="1.html">小区展示</a></li>
-                <li><a href="2.html">小区信息管理</a></li>
-                <li><a href="3.html">管理员信息管理</a></li>
-                <li><a href="4.html">业主信息管理</a></li>
-                <li><a href="5.html">房产信息管理</a></li>
-                <li><a href="6.html">车位管理</a></li>
-                <li><a href="7.html">收费管理</a></li>
-
-            </ul>
-        </div>
-        <div class="slider-contetn">
-            <div class="picture">
-                <img src="img/11.jpeg" alt="">
-            </div>
-        </div>
-
-    </div>
-</div>
 
 
+<script>
+//ajax
+    function a() {
+        $.ajax({
+        url: "1.html",  //要请求的页面
+        global: false,
+        type: "get",
+        dataType: "html",  //请求类型
+        async: false,   //是否为异步请求
+    success: function (msg) {  //msg得到的数据(这里得到的是整个html代码)
+        // alert(msg);
+    $('.page-content').html(msg);
+             }
+          })
+    };
+    function b() {
+    $.ajax({
+        url: "2.html",  //要请求的页面
+        global: false,
+        type: "get",
+        dataType: "html",  //请求类型
+        async: false,   //是否为异步请求
+        success: function (msg) {  //msg得到的数据(这里得到的是整个html代码)
+            // alert(msg);
+            $('.page-content').html(msg);
+        }
+    })
+};
+function c() {
+    $.ajax({
+        url: "3.html",  //要请求的页面
+        global: false,
+        type: "get",
+        dataType: "html",  //请求类型
+        async: false,   //是否为异步请求
+        success: function (msg) {  //msg得到的数据(这里得到的是整个html代码)
+            // alert(msg);
+            $('.page-content').html(msg);
+        }
+    })
+};
+function d() {
+    $.ajax({
+        url: "4.html",  //要请求的页面
+        global: false,
+        type: "get",
+        dataType: "html",  //请求类型
+        async: false,   //是否为异步请求
+        success: function (msg) {  //msg得到的数据(这里得到的是整个html代码)
+            // alert(msg);
+            $('.page-content').html(msg);
+        }
+    })
+};
+function e() {
+    $.ajax({
+        url: "5.html",  //要请求的页面
+        global: false,
+        type: "get",
+        dataType: "html",  //请求类型
+        async: false,   //是否为异步请求
+        success: function (msg) {  //msg得到的数据(这里得到的是整个html代码)
+            // alert(msg);
+            $('.page-content').html(msg);
+        }
+    })
+};
+function f() {
+    $.ajax({
+        url: "6.html",  //要请求的页面
+        global: false,
+        type: "get",
+        dataType: "html",  //请求类型
+        async: false,   //是否为异步请求
+        success: function (msg) {  //msg得到的数据(这里得到的是整个html代码)
+            // alert(msg);
+            $('.page-content').html(msg);
+        }
+    })
+};
+function g() {
+    $.ajax({
+        url: "7.html",  //要请求的页面
+        global: false,
+        type: "get",
+        dataType: "html",  //请求类型
+        async: false,   //是否为异步请求
+        success: function (msg) {  //msg得到的数据(这里得到的是整个html代码)
+            // alert(msg);
+            $('.page-content').html(msg);
+        }
+    })
+};
+    //左侧导航
+//    $('.nav>li>a').bind('click', function () {
+//          if ($(this).next('ul').hasClass('dplay')) {
+//          $(this).parent('li').removeClass('hideli');
+//          $(this).next('ul').removeClass('dplay').addClass('hide').slideUp();
+//    }else{
+//          $(this).parent('li').siblings().children(":last-child").removeClass('dplay').addClass('hide');
+//          $(this).parent('li').addClass('hideli');
+//          $(this).parent('li').siblings().removeClass('hideli');
+//          $(this).next('ul').removeClass('hide').addClass('dplay').slideDown();
+//        }
+//    });
+
+        $('.menu>li').bind('mouseenter',function () {
+            if($(this).hasClass('active')){
+
+        }else{
+            $(this).addClass('active');
+            $(this).siblings('li').removeClass('active');
+             }
+        });
+
+
+</script>
 </body>
 </html>

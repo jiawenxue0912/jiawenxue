@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+
+
+    h1{
+        text-align: center;
+    }
+    .button .ww{
+        margin-left: 550px;
+    }
+    .ww{
+        width: 200px;
+        height: 25px;
+    }
+    a{
+        float: right;
+        text-decoration: none;
+        font-size: 30px;
+        margin-right: 10px;
+    }
+
+    .ee{
+        height: 40px;
+        line-height: 40px;
+        font-size: 30px;
+        background-color: #BABEBF;
+        width: 1100px;
+        text-align: center;
+
+    }
+</style>
+<body>
+
+
+<table id = "test_table"  border="1" >
+    <tr><td></td>
+        <td>收费住址</td>
+        <td>水费</td>
+        <td>电费</td>
+        <td>宽带费</td>
+        <td>物业管理费</td>
+        <td>收费时间</td>
+
+    </tr>
+    <tr><td><input type="checkbox" name="test">
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+
+
+
+
+    </tr>
+    <tr><td><input type="checkbox" name="test">
+
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+
+    </tr>
+    <tr><td><input type="checkbox" name="test">
+
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+        <td><input type="text"></td>
+
+    </tr>
+</table>
+<input type="button" value="删除">
+
+<button>修改</button>
+
+
+<script src="jquery-3.3.1.js"></script>
+<script>
+    $(function(){
+        $("input[type='button']").click(function() {
+            $("input[name='test']:checked").each(function() { // 遍历选中的checkbox
+                n = $(this).parents("tr").index();  // 获取checkbox所在行的顺序
+                $("table#test_table").find("tr:eq("+n+")").remove();
+            });
+        });
+    });
+</script>
+</body>
+</html>
