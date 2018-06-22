@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>轮播图</title>
+</head>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+}
+    li{
+        list-style: none;
+    }
+    img{
+        border: 0;
+    }
+   #imgs img{
+    display: none;
+   }
+    #imgs .selected{
+        display: block;
+    }
+    #tab {
+        height: 20px;
+        position: absolute;
+        right: 15px;
+        bottom: 15px;
+    }
+    #tab li,#arrows span{
+        width: 20px;
+        height: 20px;
+        background: #000;
+        color: white;
+        cursor: pointer;
+        text-align: center;
+        line-height: 20px;
+        float: left;
+        margin-right: 5px;
+    }
+    #tab .selected{
+        background: orange;
+    }
+    #container{
+        position: relative;
+        width: 555px;
+        height: 325px;
+        margin: 100px auto;
+    }
+    #arrows{
+        position: absolute;
+        left: 15px;
+        bottom: 15px;
+    }
+
+</style>
+<body>
+<div id="container">
+    <div id="imgs">
+        <img src="images/ads/1.jpg" alt="" class="selected">
+        <img src="images/ads/2.jpg" alt="">
+        <img src="images/ads/3.jpg" alt="">
+        <img src="images/ads/4.jpg" alt="">
+    </div>
+    <ul id="tab">
+        <li class="selected">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
+    <div id="arrows">
+        <span id="prev">&lt;</span>
+        <span id="next">&gt;</span>
+    </div>
+</div>
+
+<script>
+    var oContainer=document.getElementById("container");
+    var oTab=document.getElementById("tab");
+    var aLi=oTab.getElementsByTagName("li");
+    var oImgs=document.getElementById("imgs");
+    var oImg=oImgs.getElementsByTagName("img");
+    var oPrev=document.getElementById("prev");
+    var oNext=document.getElementById("next");
+    var iNow=0;
+    var timer
+
+    for(var i=0;i<aLi.length;i++){
+        aLi[i].index=i;
+        aLi[i].onmouseover=function () {
+            iNow=this.index;
+            changeImg()
+        }
+    }
+    oPrev.onclick=oNext.onclick=function () {
+        if(this==oPrev){
+            iNow--;
+            if(iNow==-1){
+                iNow=3;
+            }
+        }else{
+            iNow++;
+            if(iNow==4){
+                iNow=0;
+            }
+        }
+       changeImg();
+    }
+        oPrev.onselectstart=oNext.onselectstart=function () {
+            return false
+        }
+
+       play();
+        oContainer.onmouseover=function () {
+            clearInterval(timer)
+        }
+        oContainer.onmouseout=function () {
+            play();
+        }
+        function changeImg() {
+            for (var i=0;i<aLi.length;i++){
+                aLi[i].className="";
+                oImg[i].className=""
+            }
+            aLi[iNow].className="selected";
+            oImg[iNow].className="selected"
+        }
+        function play() {
+            timer= setInterval(function () {
+                oNext.onclick()
+            },1000);
+        }
+</script>
+</body>
+</html>
